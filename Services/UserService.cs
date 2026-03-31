@@ -63,6 +63,22 @@ namespace SmartPowerOutageSystem.Services
             return dt;
         }
 
+        public List<string> GetUsersByRole(string role)
+        {
+            var list = new List<string>();
+            using var connection = DatabaseHelper.GetConnection();
+            connection.Open();
+            var cmd = connection.CreateCommand();
+            cmd.CommandText = "SELECT Username FROM Users WHERE Role = @r ORDER BY Username";
+            cmd.Parameters.AddWithValue("@r", role);
+            using var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                list.Add(reader.GetString(0));
+            }
+            return list;
+        }
+
         public bool SaveUser(string username, string password, string role, string location = "Unknown")
         {
             using var connection = DatabaseHelper.GetConnection();

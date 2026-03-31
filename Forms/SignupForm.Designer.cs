@@ -86,7 +86,7 @@ namespace SmartPowerOutageSystem.Forms
             btnSignup.Name = "btnSignup";
             btnSignup.Size = new Size(350, 55);
             btnSignup.TabIndex = 4;
-            btnSignup.Text = "REGISTER";
+            btnSignup.Text = "SIGN UP";
             btnSignup.UseVisualStyleBackColor = false;
             btnSignup.Click += btnSignup_Click;
             // 

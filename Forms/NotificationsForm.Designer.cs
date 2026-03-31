@@ -53,27 +53,29 @@ namespace SmartPowerOutageSystem.Forms
             // 
             // panelContent
             // 
-            panelContent.BackColor = Color.White;
+            panelContent.BackColor = Color.FromArgb(248, 250, 252);
             panelContent.Controls.Add(btnMarkRead);
             panelContent.Controls.Add(dgvNotifs);
             panelContent.Dock = DockStyle.Fill;
             panelContent.Location = new Point(0, 100);
             panelContent.Name = "panelContent";
-            panelContent.Padding = new Padding(20);
+            panelContent.Padding = new Padding(25);
             panelContent.Size = new Size(800, 500);
             panelContent.TabIndex = 1;
             // 
             // btnMarkRead
             // 
             btnMarkRead.BackColor = Color.FromArgb(37, 99, 235);
+            btnMarkRead.Cursor = Cursors.Hand;
+            btnMarkRead.FlatAppearance.BorderSize = 0;
             btnMarkRead.FlatStyle = FlatStyle.Flat;
-            btnMarkRead.Font = new Font("Segoe UI Semibold", 10F);
+            btnMarkRead.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
             btnMarkRead.ForeColor = Color.White;
-            btnMarkRead.Location = new Point(20, 440);
+            btnMarkRead.Location = new Point(25, 425);
             btnMarkRead.Name = "btnMarkRead";
-            btnMarkRead.Size = new Size(160, 40);
+            btnMarkRead.Size = new Size(180, 42);
             btnMarkRead.TabIndex = 1;
-            btnMarkRead.Text = "Mark as Read";
+            btnMarkRead.Text = "✔ Mark as Read";
             btnMarkRead.UseVisualStyleBackColor = false;
             btnMarkRead.Click += btnMarkRead_Click;
             // 
@@ -82,15 +84,22 @@ namespace SmartPowerOutageSystem.Forms
             dgvNotifs.AllowUserToAddRows = false;
             dgvNotifs.AllowUserToDeleteRows = false;
             dgvNotifs.BackgroundColor = Color.White;
-            dgvNotifs.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvNotifs.Location = new Point(20, 20);
+            dgvNotifs.BorderStyle = BorderStyle.None;
+            dgvNotifs.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvNotifs.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgvNotifs.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(248, 250, 252);
+            dgvNotifs.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(100, 116, 139);
+            dgvNotifs.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI Semibold", 10F);
+            dgvNotifs.EnableHeadersVisualStyles = false;
+            dgvNotifs.Dock = DockStyle.None;
+            dgvNotifs.Location = new Point(25, 20);
             dgvNotifs.MultiSelect = false;
             dgvNotifs.Name = "dgvNotifs";
             dgvNotifs.ReadOnly = true;
             dgvNotifs.RowHeadersVisible = false;
-            dgvNotifs.RowTemplate.Height = 40;
+            dgvNotifs.RowTemplate.Height = 46;
             dgvNotifs.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvNotifs.Size = new Size(760, 400);
+            dgvNotifs.Size = new Size(750, 395);
             dgvNotifs.TabIndex = 0;
             // 
             // btnClose

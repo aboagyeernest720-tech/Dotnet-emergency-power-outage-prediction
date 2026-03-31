@@ -9,15 +9,15 @@ namespace SmartPowerOutageSystem.Forms
     {
         private string _username;
         private string _location;
-        private UserService _userService = new UserService();
-        private OperationService _operationService = new OperationService();
+        private readonly UserService _userService = new UserService();
+        private readonly OperationService _operationService = new OperationService();
 
         public UserDashboardForm(string username)
         {
             InitializeComponent();
             _username = username;
             _location = _userService.GetUserLocation(_username);
-            lblWelcome.Text = $"Welcome, {_username}";
+            lblWelcome.Text  = $"Welcome, {_username}";
             lblLocation.Text = $"Location: {_location}";
             CheckStatus();
         }
@@ -105,9 +105,5 @@ namespace SmartPowerOutageSystem.Forms
             Application.Exit();
         }
 
-        private void btnRefresh_Click(object sender, EventArgs e)
-        {
-            CheckStatus();
-        }
     }
 }

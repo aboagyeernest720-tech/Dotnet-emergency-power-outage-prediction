@@ -21,7 +21,6 @@ namespace SmartPowerOutageSystem.Services
                 cmd.Parameters.AddWithValue("@u", username);
                 cmd.Parameters.AddWithValue("@m", message);
                 cmd.Parameters.AddWithValue("@d", DateTime.Now);
-
                 return cmd.ExecuteNonQuery() > 0;
             }
             catch (Exception ex)
@@ -29,6 +28,33 @@ namespace SmartPowerOutageSystem.Services
                 System.Diagnostics.Debug.WriteLine($"Notification error: {ex.Message}");
                 return false;
             }
+        }
+
+        public bool SendNotificationToLocation(string location, string message)
+        {
+            using var connection = DatabaseHelper.GetConnection();
+            connection.Open();
+
+            // Find all users in location
+            var cmdUsers = connection.CreateCommand();
+            cmdUsers.CommandText = "SELECT Username FROM Users WHERE Location = @loc OR @loc = 'All'";
+            cmdUsers.Parameters.AddWithValue("@loc", location);
+            
+            var users = new List<string>();
+            using (var reader = cmdUsers.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    users.Add(reader.GetString(0));
+                }
+            }
+
+            int count = 0;
+            foreach(var u in users)
+            {
+                if (SendNotification(u, message)) count++;
+            }
+            return count > 0;
         }
 
         public List<Notification> GetUserNotifications(string username)

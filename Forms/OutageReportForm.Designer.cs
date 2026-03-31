@@ -87,6 +87,7 @@ namespace SmartPowerOutageSystem.Forms
             // 
             cmbLocation.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbLocation.Font = new Font("Segoe UI", 11F);
+            cmbLocation.FlatStyle = FlatStyle.Flat;
             cmbLocation.FormattingEnabled = true;
             cmbLocation.Location = new Point(40, 140);
             cmbLocation.Name = "cmbLocation";
@@ -107,6 +108,7 @@ namespace SmartPowerOutageSystem.Forms
             // 
             cmbOutageType.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbOutageType.Font = new Font("Segoe UI", 11F);
+            cmbOutageType.FlatStyle = FlatStyle.Flat;
             cmbOutageType.FormattingEnabled = true;
             cmbOutageType.Items.AddRange(new object[] { "Planned", "Unplanned", "Emergency", "Maintenance" });
             cmbOutageType.Location = new Point(40, 220);
@@ -183,17 +185,19 @@ namespace SmartPowerOutageSystem.Forms
             btnSave.Text = "SUBMIT REPORT";
             btnSave.UseVisualStyleBackColor = false;
             btnSave.Click += btnSave_Click;
-            // 
-            // btnClear
-            // 
+            btnClear.BackColor = Color.FromArgb(241, 245, 249);
+            btnClear.Cursor = Cursors.Hand;
+            btnClear.FlatAppearance.BorderColor = Color.FromArgb(203, 213, 225);
+            btnClear.FlatAppearance.BorderSize = 1;
             btnClear.FlatStyle = FlatStyle.Flat;
-            btnClear.Font = new Font("Segoe UI", 11F);
+            btnClear.Font = new Font("Segoe UI Semibold", 10F);
+            btnClear.ForeColor = Color.FromArgb(71, 85, 105);
             btnClear.Location = new Point(290, 630);
             btnClear.Name = "btnClear";
-            btnClear.Size = new Size(120, 45);
+            btnClear.Size = new Size(100, 45);
             btnClear.TabIndex = 12;
             btnClear.Text = "Clear";
-            btnClear.UseVisualStyleBackColor = true;
+            btnClear.UseVisualStyleBackColor = false;
             btnClear.Click += btnClear_Click;
             // 
             // errorProvider
@@ -204,6 +208,7 @@ namespace SmartPowerOutageSystem.Forms
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(248, 250, 252);
             ClientSize = new Size(650, 700);
             Controls.Add(btnClear);
             Controls.Add(btnSave);

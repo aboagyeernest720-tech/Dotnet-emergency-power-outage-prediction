@@ -41,6 +41,15 @@ namespace SmartPowerOutageSystem.Data
             ";
             cmdOutageReport.ExecuteNonQuery();
 
+            // Alter OutageReports table to add Severity and AssignedTechnician properties
+            var cmdAlterSeverity = connection.CreateCommand();
+            cmdAlterSeverity.CommandText = "IF NOT EXISTS(SELECT * FROM sys.columns WHERE Name = N'Severity' AND Object_ID = Object_ID(N'OutageReports')) ALTER TABLE OutageReports ADD Severity NVARCHAR(MAX) DEFAULT 'Unclassified';";
+            cmdAlterSeverity.ExecuteNonQuery();
+
+            var cmdAlterTech = connection.CreateCommand();
+            cmdAlterTech.CommandText = "IF NOT EXISTS(SELECT * FROM sys.columns WHERE Name = N'AssignedTechnician' AND Object_ID = Object_ID(N'OutageReports')) ALTER TABLE OutageReports ADD AssignedTechnician NVARCHAR(MAX);";
+            cmdAlterTech.ExecuteNonQuery();
+
             // Create Users table for login
             var cmdUsers = connection.CreateCommand();
             cmdUsers.CommandText = @"

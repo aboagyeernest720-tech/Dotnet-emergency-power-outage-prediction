@@ -106,6 +106,8 @@ namespace SmartPowerOutageSystem.Forms
 
                 if (_userService.SaveUser(username, password, assignedRole, userLocation))
                 {
+                    MessageBox.Show("Registration successful! You can now log in.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                     NewUsername = username;
                     NewPassword = password;
                     this.DialogResult = DialogResult.OK;

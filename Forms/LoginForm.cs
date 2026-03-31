@@ -33,10 +33,10 @@ namespace SmartPowerOutageSystem.Forms
 
                     // Show specialized Dashboard
                     this.Hide();
-                    if (role == "Administrator")
+                    if (role == "Administrator" || role == "Manager" || role == "Dispatcher" || role == "Technician")
                     {
-                        var adminDashboard = new AdminDashboardForm(username);
-                        adminDashboard.Show();
+                        var staffDashboard = new AdminDashboardForm(username, role);
+                        staffDashboard.Show();
                     }
                     else
                     {

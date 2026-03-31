@@ -104,7 +104,8 @@ namespace SmartPowerOutageSystem.Forms
             // 
             // panelActions
             // 
-            panelActions.BackColor = Color.FromArgb(240, 242, 245);
+            panelActions.BackColor = Color.White;
+            panelActions.BorderStyle = BorderStyle.FixedSingle;
             panelActions.Controls.Add(btnUpdateStatus);
             panelActions.Controls.Add(btnShowSummary);
             panelActions.Controls.Add(btnDelete);
@@ -166,13 +167,18 @@ namespace SmartPowerOutageSystem.Forms
             // btnRefresh
             // 
             btnRefresh.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnRefresh.BackColor = Color.FromArgb(241, 245, 249);
+            btnRefresh.Cursor = Cursors.Hand;
+            btnRefresh.FlatAppearance.BorderColor = Color.FromArgb(203, 213, 225);
             btnRefresh.FlatStyle = FlatStyle.Flat;
+            btnRefresh.Font = new Font("Segoe UI Semibold", 9F);
+            btnRefresh.ForeColor = Color.FromArgb(71, 85, 105);
             btnRefresh.Location = new Point(850, 22);
             btnRefresh.Name = "btnRefresh";
             btnRefresh.Size = new Size(100, 35);
             btnRefresh.TabIndex = 3;
-            btnRefresh.Text = "Refresh";
-            btnRefresh.UseVisualStyleBackColor = true;
+            btnRefresh.Text = "⟳ Refresh";
+            btnRefresh.UseVisualStyleBackColor = false;
             btnRefresh.Click += btnRefresh_Click;
             // 
             // txtSearch
@@ -187,13 +193,18 @@ namespace SmartPowerOutageSystem.Forms
             // 
             // btnSearch
             // 
+            btnSearch.BackColor = Color.FromArgb(37, 99, 235);
+            btnSearch.Cursor = Cursors.Hand;
+            btnSearch.FlatAppearance.BorderSize = 0;
             btnSearch.FlatStyle = FlatStyle.Flat;
+            btnSearch.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
+            btnSearch.ForeColor = Color.White;
             btnSearch.Location = new Point(430, 24);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(100, 32);
+            btnSearch.Size = new Size(90, 32);
             btnSearch.TabIndex = 1;
             btnSearch.Text = "Search";
-            btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.UseVisualStyleBackColor = false;
             btnSearch.Click += btnSearch_Click;
             // 
             // lblSearch
@@ -210,6 +221,7 @@ namespace SmartPowerOutageSystem.Forms
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(248, 250, 252);
             ClientSize = new Size(1100, 750);
             Controls.Add(panelContent);
             Controls.Add(panelActions);

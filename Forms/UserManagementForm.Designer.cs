@@ -41,7 +41,7 @@ namespace SmartPowerOutageSystem.Forms
             // 
             // panelHeader
             // 
-            panelHeader.BackColor = Color.FromArgb(0, 150, 136);
+            panelHeader.BackColor = Color.FromArgb(17, 33, 51);
             panelHeader.Controls.Add(lblTitle);
             panelHeader.Dock = DockStyle.Top;
             panelHeader.Location = new Point(0, 0);
@@ -76,12 +76,18 @@ namespace SmartPowerOutageSystem.Forms
             dgvUsers.AllowUserToAddRows = false;
             dgvUsers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvUsers.BackgroundColor = Color.White;
-            dgvUsers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvUsers.BorderStyle = BorderStyle.None;
+            dgvUsers.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvUsers.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgvUsers.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+            dgvUsers.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+            dgvUsers.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI Semibold", 10.5F);
+            dgvUsers.EnableHeadersVisualStyles = false;
+            dgvUsers.RowHeadersVisible = false;
             dgvUsers.Dock = DockStyle.Fill;
             dgvUsers.Location = new Point(370, 20);
             dgvUsers.Name = "dgvUsers";
             dgvUsers.ReadOnly = true;
-            dgvUsers.RowHeadersVisible = false;
             dgvUsers.RowHeadersWidth = 51;
             dgvUsers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvUsers.Size = new Size(610, 580);
@@ -108,23 +114,30 @@ namespace SmartPowerOutageSystem.Forms
             // 
             // btnClear
             // 
+            btnClear.BackColor = Color.FromArgb(238, 238, 238);
+            btnClear.FlatAppearance.BorderSize = 0;
             btnClear.FlatStyle = FlatStyle.Flat;
-            btnClear.Location = new Point(20, 350);
+            btnClear.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+            btnClear.ForeColor = Color.FromArgb(71, 85, 105);
+            btnClear.Location = new Point(20, 390);
             btnClear.Name = "btnClear";
-            btnClear.Size = new Size(310, 35);
+            btnClear.Size = new Size(310, 45);
             btnClear.TabIndex = 8;
             btnClear.Text = "Clear Fields";
-            btnClear.UseVisualStyleBackColor = true;
+            btnClear.UseVisualStyleBackColor = false;
             btnClear.Click += btnClear_Click;
             // 
             // btnDelete
             // 
-            btnDelete.BackColor = Color.FromArgb(244, 67, 54);
+            btnDelete.BackColor = Color.FromArgb(239, 68, 68);
+            btnDelete.Cursor = Cursors.Hand;
+            btnDelete.FlatAppearance.BorderSize = 0;
             btnDelete.FlatStyle = FlatStyle.Flat;
+            btnDelete.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
             btnDelete.ForeColor = Color.White;
-            btnDelete.Location = new Point(20, 310);
+            btnDelete.Location = new Point(20, 335);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(310, 35);
+            btnDelete.Size = new Size(310, 45);
             btnDelete.TabIndex = 7;
             btnDelete.Text = "Delete User";
             btnDelete.UseVisualStyleBackColor = false;
@@ -132,13 +145,15 @@ namespace SmartPowerOutageSystem.Forms
             // 
             // btnSave
             // 
-            btnSave.BackColor = Color.FromArgb(76, 175, 80);
+            btnSave.BackColor = Color.FromArgb(37, 99, 235);
+            btnSave.Cursor = Cursors.Hand;
+            btnSave.FlatAppearance.BorderSize = 0;
             btnSave.FlatStyle = FlatStyle.Flat;
-            btnSave.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+            btnSave.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
             btnSave.ForeColor = Color.White;
-            btnSave.Location = new Point(20, 260);
+            btnSave.Location = new Point(20, 275);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(310, 45);
+            btnSave.Size = new Size(310, 50);
             btnSave.TabIndex = 6;
             btnSave.Text = "Save User";
             btnSave.UseVisualStyleBackColor = false;
@@ -149,7 +164,7 @@ namespace SmartPowerOutageSystem.Forms
             cmbRole.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbRole.Font = new Font("Segoe UI", 11F);
             cmbRole.FormattingEnabled = true;
-            cmbRole.Items.AddRange(new object[] { "Admin", "Manager", "Technician", "Dispatcher" });
+            cmbRole.Items.AddRange(new object[] { "Administrator", "Manager", "Technician", "Dispatcher", "User" });
             cmbRole.Location = new Point(20, 200);
             cmbRole.Name = "cmbRole";
             cmbRole.Size = new Size(310, 33);
@@ -186,16 +201,17 @@ namespace SmartPowerOutageSystem.Forms
             // 
             // txtUsername
             // 
-            txtUsername.Font = new Font("Segoe UI", 11F);
+            txtUsername.Font = new Font("Segoe UI", 12F);
             txtUsername.Location = new Point(20, 50);
             txtUsername.Name = "txtUsername";
-            txtUsername.Size = new Size(310, 32);
+            txtUsername.Size = new Size(310, 34);
             txtUsername.TabIndex = 1;
             // 
             // lblUsername
             // 
             lblUsername.AutoSize = true;
             lblUsername.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+            lblUsername.ForeColor = Color.FromArgb(66, 66, 66);
             lblUsername.Location = new Point(20, 25);
             lblUsername.Name = "lblUsername";
             lblUsername.Size = new Size(87, 23);

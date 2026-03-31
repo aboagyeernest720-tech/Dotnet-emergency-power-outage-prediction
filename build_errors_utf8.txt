@@ -1,0 +1,51 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\Data\DatabaseHelper.cs(45,45): error CS1002: ; expected [C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\SmartPowerOutageSystem.csproj]
+C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\Data\DatabaseHelper.cs(45,52): error CS1002: ; expected [C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\SmartPowerOutageSystem.csproj]
+C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\Data\DatabaseHelper.cs(45,73): error CS1003: Syntax error, ',' expected [C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\SmartPowerOutageSystem.csproj]
+C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\Data\DatabaseHelper.cs(45,85): error CS1003: Syntax error, ',' expected [C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\SmartPowerOutageSystem.csproj]
+C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\Data\DatabaseHelper.cs(45,91): error CS1003: Syntax error, ',' expected [C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\SmartPowerOutageSystem.csproj]
+C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\Data\DatabaseHelper.cs(45,99): error CS1003: Syntax error, ',' expected [C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\SmartPowerOutageSystem.csproj]
+C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\Data\DatabaseHelper.cs(45,99): error CS1012: Too many characters in character literal [C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\SmartPowerOutageSystem.csproj]
+C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\Data\DatabaseHelper.cs(45,110): error CS1003: Syntax error, ',' expected [C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\SmartPowerOutageSystem.csproj]
+C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\Data\DatabaseHelper.cs(45,114): error CS1003: Syntax error, ',' expected [C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\SmartPowerOutageSystem.csproj]
+C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\Data\DatabaseHelper.cs(45,137): error CS1003: Syntax error, ',' expected [C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\SmartPowerOutageSystem.csproj]
+C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\Data\DatabaseHelper.cs(45,137): error CS1012: Too many characters in character literal [C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\SmartPowerOutageSystem.csproj]
+C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\Data\DatabaseHelper.cs(45,155): error CS1002: ; expected [C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\SmartPowerOutageSystem.csproj]
+C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\Data\DatabaseHelper.cs(45,167): error CS1002: ; expected [C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\SmartPowerOutageSystem.csproj]
+C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\Data\DatabaseHelper.cs(45,185): error CS1002: ; expected [C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\SmartPowerOutageSystem.csproj]
+C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\Data\DatabaseHelper.cs(45,206): error CS1001: Identifier expected [C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\SmartPowerOutageSystem.csproj]
+C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\Data\DatabaseHelper.cs(45,208): error CS1002: ; expected [C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\SmartPowerOutageSystem.csproj]
+C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\Data\DatabaseHelper.cs(45,216): error CS1002: ; expected [C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\SmartPowerOutageSystem.csproj]
+C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\Data\DatabaseHelper.cs(45,216): error CS1012: Too many characters in character literal [C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\SmartPowerOutageSystem.csproj]
+C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\Data\DatabaseHelper.cs(45,231): error CS1010: Newline in constant [C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\SmartPowerOutageSystem.csproj]
+C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\Data\DatabaseHelper.cs(45,233): error CS1002: ; expected [C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\SmartPowerOutageSystem.csproj]
+
+Build FAILED.
+
+C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\Data\DatabaseHelper.cs(45,45): error CS1002: ; expected [C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\SmartPowerOutageSystem.csproj]
+C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\Data\DatabaseHelper.cs(45,52): error CS1002: ; expected [C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\SmartPowerOutageSystem.csproj]
+C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\Data\DatabaseHelper.cs(45,73): error CS1003: Syntax error, ',' expected [C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\SmartPowerOutageSystem.csproj]
+C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\Data\DatabaseHelper.cs(45,85): error CS1003: Syntax error, ',' expected [C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\SmartPowerOutageSystem.csproj]
+C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\Data\DatabaseHelper.cs(45,91): error CS1003: Syntax error, ',' expected [C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\SmartPowerOutageSystem.csproj]
+C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\Data\DatabaseHelper.cs(45,99): error CS1003: Syntax error, ',' expected [C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\SmartPowerOutageSystem.csproj]
+C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\Data\DatabaseHelper.cs(45,99): error CS1012: Too many characters in character literal [C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\SmartPowerOutageSystem.csproj]
+C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\Data\DatabaseHelper.cs(45,110): error CS1003: Syntax error, ',' expected [C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\SmartPowerOutageSystem.csproj]
+C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\Data\DatabaseHelper.cs(45,114): error CS1003: Syntax error, ',' expected [C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\SmartPowerOutageSystem.csproj]
+C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\Data\DatabaseHelper.cs(45,137): error CS1003: Syntax error, ',' expected [C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\SmartPowerOutageSystem.csproj]
+C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\Data\DatabaseHelper.cs(45,137): error CS1012: Too many characters in character literal [C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\SmartPowerOutageSystem.csproj]
+C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\Data\DatabaseHelper.cs(45,155): error CS1002: ; expected [C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\SmartPowerOutageSystem.csproj]
+C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\Data\DatabaseHelper.cs(45,167): error CS1002: ; expected [C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\SmartPowerOutageSystem.csproj]
+C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\Data\DatabaseHelper.cs(45,185): error CS1002: ; expected [C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\SmartPowerOutageSystem.csproj]
+C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\Data\DatabaseHelper.cs(45,206): error CS1001: Identifier expected [C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\SmartPowerOutageSystem.csproj]
+C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\Data\DatabaseHelper.cs(45,208): error CS1002: ; expected [C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\SmartPowerOutageSystem.csproj]
+C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\Data\DatabaseHelper.cs(45,216): error CS1002: ; expected [C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\SmartPowerOutageSystem.csproj]
+C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\Data\DatabaseHelper.cs(45,216): error CS1012: Too many characters in character literal [C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\SmartPowerOutageSystem.csproj]
+C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\Data\DatabaseHelper.cs(45,231): error CS1010: Newline in constant [C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\SmartPowerOutageSystem.csproj]
+C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\Data\DatabaseHelper.cs(45,233): error CS1002: ; expected [C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\SmartPowerOutageSystem.csproj]
+    0 Warning(s)
+    20 Error(s)
+
+Time Elapsed 00:00:09.27
+
+Workload updates are available. Run `dotnet workload list` for more information.

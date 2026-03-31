@@ -41,7 +41,6 @@ namespace SmartPowerOutageSystem.Forms
             lblNotifTitle = new Label();
             lblNotifText = new Label();
             lblNotifDate = new Label();
-            btnRefresh = new Button();
             panelSidebar.SuspendLayout();
             panelLogo.SuspendLayout();
             panelTop.SuspendLayout();
@@ -220,7 +219,6 @@ namespace SmartPowerOutageSystem.Forms
             // panelMain
             // 
             panelMain.BackColor = Color.FromArgb(245, 247, 250);
-            panelMain.Controls.Add(btnRefresh);
             panelMain.Controls.Add(pnlNotif);
             panelMain.Controls.Add(pnlStatusCard);
             panelMain.Dock = DockStyle.Fill;
@@ -319,22 +317,6 @@ namespace SmartPowerOutageSystem.Forms
             lblNotifDate.TabIndex = 2;
             lblNotifDate.Text = "Oct 25, 14:00 - 16:00";
             // 
-            // btnRefresh
-            // 
-            btnRefresh.BackColor = Color.FromArgb(37, 99, 235);
-            btnRefresh.Cursor = Cursors.Hand;
-            btnRefresh.FlatAppearance.BorderSize = 0;
-            btnRefresh.FlatStyle = FlatStyle.Flat;
-            btnRefresh.Font = new Font("Segoe UI Semibold", 9.5F);
-            btnRefresh.ForeColor = Color.White;
-            btnRefresh.Location = new Point(30, 370);
-            btnRefresh.Name = "btnRefresh";
-            btnRefresh.Size = new Size(160, 45);
-            btnRefresh.TabIndex = 3;
-            btnRefresh.Text = "🔄 Refresh Tracker";
-            btnRefresh.UseVisualStyleBackColor = false;
-            btnRefresh.Click += btnRefresh_Click;
-            // 
             // UserDashboardForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -382,6 +364,5 @@ namespace SmartPowerOutageSystem.Forms
         private Label lblNotifTitle;
         private Label lblNotifText;
         private Label lblNotifDate;
-        private Button btnRefresh;
     }
 }

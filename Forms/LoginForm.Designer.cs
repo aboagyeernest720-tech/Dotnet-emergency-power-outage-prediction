@@ -97,8 +97,12 @@ namespace SmartPowerOutageSystem.Forms
             btnSignup.Name = "btnSignup";
             btnSignup.Size = new Size(340, 45);
             btnSignup.TabIndex = 5;
-            btnSignup.Text = "Create New Account";
+            btnSignup.Text = "SIGN UP";
             btnSignup.UseVisualStyleBackColor = false;
+            btnSignup.Click += btnSignup_Click;
+            // 
+            // btnExit
+            // 
             btnExit.BackColor = Color.FromArgb(238, 238, 238);
             btnExit.Cursor = Cursors.Hand;
             btnExit.FlatAppearance.BorderSize = 0;

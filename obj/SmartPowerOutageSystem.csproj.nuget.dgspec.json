@@ -58,6 +58,10 @@
             "Microsoft.Data.Sqlite": {
               "target": "Package",
               "version": "[10.0.5, )"
+            },
+            "Twilio": {
+              "target": "Package",
+              "version": "[7.14.3, )"
             }
           },
           "imports": [

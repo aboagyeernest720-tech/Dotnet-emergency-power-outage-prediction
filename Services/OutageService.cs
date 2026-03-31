@@ -50,10 +50,41 @@ namespace SmartPowerOutageSystem.Services
                     Description = reader.IsDBNull(4) ? "" : reader.GetString(4),
                     Status = reader.IsDBNull(5) ? "Pending" : reader.GetString(5),
                     RestorationDate = reader.IsDBNull(6) ? null : reader.GetDateTime(6),
-                    ReportedBy = reader.IsDBNull(7) ? "Anonymous" : reader.GetString(7)
+                    ReportedBy = reader.IsDBNull(7) ? "Anonymous" : reader.GetString(7),
+                    Severity = reader.FieldCount > 8 && !reader.IsDBNull(8) ? reader.GetString(8) : "Unclassified",
+                    AssignedTechnician = reader.FieldCount > 9 && !reader.IsDBNull(9) ? reader.GetString(9) : null
                 });
             }
             return reports;
+        }
+
+        public bool AssignTechnician(int id, string technicianName)
+        {
+            using var connection = DatabaseHelper.GetConnection();
+            connection.Open();
+            var cmd = connection.CreateCommand();
+            cmd.CommandText = "UPDATE OutageReports SET AssignedTechnician = @t WHERE ReportID = @id";
+            cmd.Parameters.AddWithValue("@t", technicianName);
+            cmd.Parameters.AddWithValue("@id", id);
+            
+            bool success = cmd.ExecuteNonQuery() > 0;
+            if (success)
+            {
+                var notifService = new NotificationService();
+                notifService.SendNotification(technicianName, $"You have been assigned to clear a power outage task for Report #{id}.");
+            }
+            return success;
+        }
+
+        public bool UpdateSeverity(int id, string severity)
+        {
+            using var connection = DatabaseHelper.GetConnection();
+            connection.Open();
+            var cmd = connection.CreateCommand();
+            cmd.CommandText = "UPDATE OutageReports SET Severity = @s WHERE ReportID = @id";
+            cmd.Parameters.AddWithValue("@s", severity);
+            cmd.Parameters.AddWithValue("@id", id);
+            return cmd.ExecuteNonQuery() > 0;
         }
 
         public bool UpdateStatus(int id, string status, DateTime? restorationDate = null)
