@@ -23,6 +23,7 @@ namespace SmartPowerOutageSystem.Forms
             lblTitle = new Label();
             panelContent = new Panel();
             btnMarkRead = new Button();
+            btnApprove = new Button();
             dgvNotifs = new DataGridView();
             btnClose = new Button();
             panelHeader.SuspendLayout();
@@ -55,6 +56,7 @@ namespace SmartPowerOutageSystem.Forms
             // 
             panelContent.BackColor = Color.FromArgb(248, 250, 252);
             panelContent.Controls.Add(btnMarkRead);
+            panelContent.Controls.Add(btnApprove);
             panelContent.Controls.Add(dgvNotifs);
             panelContent.Dock = DockStyle.Fill;
             panelContent.Location = new Point(0, 100);
@@ -78,6 +80,23 @@ namespace SmartPowerOutageSystem.Forms
             btnMarkRead.Text = "✔ Mark as Read";
             btnMarkRead.UseVisualStyleBackColor = false;
             btnMarkRead.Click += btnMarkRead_Click;
+            // 
+            // btnApprove
+            // 
+            btnApprove.BackColor = Color.FromArgb(46, 204, 113);
+            btnApprove.Cursor = Cursors.Hand;
+            btnApprove.FlatAppearance.BorderSize = 0;
+            btnApprove.FlatStyle = FlatStyle.Flat;
+            btnApprove.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+            btnApprove.ForeColor = Color.White;
+            btnApprove.Location = new Point(220, 425);
+            btnApprove.Name = "btnApprove";
+            btnApprove.Size = new Size(180, 42);
+            btnApprove.TabIndex = 2;
+            btnApprove.Text = "✔ Approve Update";
+            btnApprove.UseVisualStyleBackColor = false;
+            btnApprove.Visible = false;
+            btnApprove.Click += btnApprove_Click;
             // 
             // dgvNotifs
             // 
@@ -144,6 +163,7 @@ namespace SmartPowerOutageSystem.Forms
         private Panel panelContent;
         private DataGridView dgvNotifs;
         private Button btnMarkRead;
+        private Button btnApprove;
         private Button btnClose;
     }
 }

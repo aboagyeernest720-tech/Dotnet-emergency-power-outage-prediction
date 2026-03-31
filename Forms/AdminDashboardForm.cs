@@ -34,6 +34,10 @@ namespace SmartPowerOutageSystem.Forms
 
             if (_role == "Manager")
             {
+                btnReport.Visible = true;
+                btnReport.Click -= btnReport_Click;
+                btnReport.Click += btnNotifications_Click;
+
                 btnUsers.Text = "📢  Planned Activity";
                 btnUsers.Click -= btnUserManagement_Click;
                 btnUsers.Click += btnPlannedActivity_Click;
@@ -44,6 +48,10 @@ namespace SmartPowerOutageSystem.Forms
             }
             else if (_role == "Dispatcher")
             {
+                btnReport.Visible = true;
+                btnReport.Click -= btnReport_Click;
+                btnReport.Click += btnNotifications_Click;
+
                 btnUsers.Visible = false;
                 btnLocations.Visible = false;
                 btnStats.Visible = false;
@@ -51,15 +59,19 @@ namespace SmartPowerOutageSystem.Forms
             }
             else if (_role == "Technician")
             {
+                btnReport.Visible = true;
+                btnReport.Click -= btnReport_Click;
+                btnReport.Click += btnNotifications_Click;
+
                 btnUsers.Visible = false;
                 btnLocations.Visible = false;
-                btnReport.Visible = false;
                 btnReports.Text = "🔧 My Assigned Tasks";
                 btnStats.Text = "📝 Update Task Status";
             }
 
             ConfigureGrids();
             LoadStatistics();
+            UpdateNotificationBadge();
             
             // Re-render sizes correctly
             this.Resize += (s, e) => { Invalidate(true); };
@@ -167,14 +179,18 @@ namespace SmartPowerOutageSystem.Forms
         {
             try
             {
-                var counts = _outageService.GetDashboardCounts();
+                string? techFilter = (_role == "Technician") ? _username : null;
+
+                var counts = _outageService.GetDashboardCounts(techFilter);
                 _totalOutages = counts["Total"];
                 _pending = counts["Pending"];
                 _resolved = counts["Resolved"];
                 _today = counts["Today"];
 
-                dgvRecent.DataSource = _outageService.GetRecentReports(4); // Match screenshot rows
-                _chartData = _outageService.GetTopLocationsForChart(5);
+                dgvRecent.DataSource = _outageService.GetRecentReports(4, techFilter, true); 
+                _chartData = _outageService.GetTopLocationsForChart(5, techFilter);
+                
+                lblRecentTitle.Text = "Today's Outage Reports";
                 
                 // Refresh paintings
                 pnlCards.Invalidate(true);
@@ -200,7 +216,9 @@ namespace SmartPowerOutageSystem.Forms
             int cardH = pnlCards.Height - 12;
 
             // Professional card accent colors
-            DrawCard(g, new Rectangle(startX, 4, cardW, cardH), "Total Outages", _totalOutages.ToString("D2"),
+            string totalLabel = (_role == "Technician") ? "Total Assignments" : "Total Complaints";
+
+            DrawCard(g, new Rectangle(startX, 4, cardW, cardH), totalLabel, _totalOutages.ToString("D2"),
                 Color.FromArgb(26, 86, 219), Color.FromArgb(147, 197, 253), "⚡");
             DrawCard(g, new Rectangle(startX + (cardW+spacing)*1, 4, cardW, cardH), "Pending", _pending.ToString("D2"),
                 Color.FromArgb(217, 119, 6), Color.FromArgb(252, 211, 77), "🕒");
@@ -447,11 +465,39 @@ namespace SmartPowerOutageSystem.Forms
         {
             new OutageReportForm(_username).ShowDialog();
             LoadStatistics();
+            UpdateNotificationBadge();
+        }
+
+        private void btnNotifications_Click(object? sender, EventArgs e)
+        {
+            using (var form = new NotificationsForm(_username))
+            {
+                form.ShowDialog();
+            }
+            UpdateNotificationBadge();
+        }
+
+        private void UpdateNotificationBadge()
+        {
+            if (_role == "Administrator") return; // Admins don't get notifications
+
+            var notifService = new NotificationService();
+            int unread = notifService.GetUnreadCount(_username);
+            if (unread > 0)
+            {
+                btnReport.Text = $"🔔 Notifications ({unread})";
+                btnReport.ForeColor = Color.Orange; // Yellow badge
+            }
+            else
+            {
+                btnReport.Text = "🔔 Notifications";
+                btnReport.ForeColor = Color.FromArgb(200, 210, 220); // Normal muted text
+            }
         }
 
         private void btnOutageRecords_Click(object sender, EventArgs e)
         {
-            new OutageRecordsForm(_role).ShowDialog();
+            new OutageRecordsForm(_role, _username).ShowDialog();
             LoadStatistics();
         }
 

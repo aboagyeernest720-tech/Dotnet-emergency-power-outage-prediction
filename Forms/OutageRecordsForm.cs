@@ -13,11 +13,13 @@ namespace SmartPowerOutageSystem.Forms
         private List<PowerOutageReport> _allReports = new List<PowerOutageReport>();
 
         private string _role;
+        private string _username;
 
-        public OutageRecordsForm(string role = "Administrator")
+        public OutageRecordsForm(string role = "Administrator", string username = "")
         {
             InitializeComponent();
             _role = role;
+            _username = username;
             LoadData();
             SetupManagerContextMenu();
 
@@ -61,8 +63,20 @@ namespace SmartPowerOutageSystem.Forms
             if (dgvRecords == null) return;
             try
             {
+                var list = _outageService.GetAllReports();
 
-                _allReports = _outageService.GetAllReports();
+                if (_role == "Technician")
+                {
+                    // Only show tasks assigned specifically to this technician
+                    list = list.Where(r => r.AssignedTechnician == _username).ToList();
+                }
+
+                // Sorting: Major first, then Minor, then Unclassified, then sort by date descending
+                _allReports = list.OrderByDescending(r => r.Severity == "Major")
+                                 .ThenByDescending(r => r.Severity == "Minor")
+                                 .ThenByDescending(r => r.ReportDate)
+                                 .ToList();
+
                 dgvRecords.DataSource = null;
                 dgvRecords.DataSource = _allReports;
             }

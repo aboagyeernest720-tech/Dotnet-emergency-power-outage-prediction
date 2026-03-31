@@ -19,7 +19,17 @@ namespace SmartPowerOutageSystem.Forms
 
             // Double-click to read full message
             dgvNotifs.CellDoubleClick += DgvNotifs_CellDoubleClick;
+            dgvNotifs.SelectionChanged += DgvNotifs_SelectionChanged;
             dgvNotifs.Cursor = Cursors.Hand;
+        }
+
+        private void DgvNotifs_SelectionChanged(object? sender, EventArgs e)
+        {
+            if (dgvNotifs.SelectedRows.Count == 0 || btnApprove == null) return;
+            string msg = dgvNotifs.SelectedRows[0].Cells["Message"]?.Value?.ToString() ?? "";
+            
+            // Show approve button only for Manager approval requests
+            btnApprove.Visible = msg.StartsWith("[AWAITING APPROVAL]");
         }
 
         private void ApplyTheme()
@@ -168,6 +178,54 @@ namespace SmartPowerOutageSystem.Forms
                 {
                     _notifService.MarkAsRead(id);
                     LoadNotifications();
+                }
+            }
+        }
+
+        private void btnApprove_Click(object? sender, EventArgs e)
+        {
+            if (dgvNotifs.SelectedRows.Count == 0) return;
+            
+            var row = dgvNotifs.SelectedRows[0];
+            string msg = row.Cells["Message"]?.Value?.ToString() ?? "";
+            object? idObj = row.Cells["NotificationID"]?.Value;
+
+            if (msg.StartsWith("[AWAITING APPROVAL]") && idObj is int notifId)
+            {
+                // Format: "[AWAITING APPROVAL] Report #{id}: Status Update! Reporter: {reportedBy} | Location: {location} | New Status: {status}"
+                try
+                {
+                    int repoIdIdx = msg.IndexOf("Report #") + "Report #".Length;
+                    int repoIdEnd = msg.IndexOf(":", repoIdIdx);
+                    string reportId = msg.Substring(repoIdIdx, repoIdEnd - repoIdIdx).Trim();
+
+                    int reporterIdx = msg.IndexOf("Reporter: ") + "Reporter: ".Length;
+                    int locIdx = msg.IndexOf(" | Location: ");
+                    string reporter = msg.Substring(reporterIdx, locIdx - reporterIdx).Trim();
+
+                    int locEndIdx = msg.IndexOf(" | New Status: ");
+                    string location = msg.Substring(locIdx + " | Location: ".Length, locEndIdx - (locIdx + " | Location: ".Length)).Trim();
+                    string status = msg.Substring(locEndIdx + " | New Status: ".Length).Trim();
+
+                    string messageToReporter = $"Outage Update: We apologize for the outage experienced earlier at {location}. The issue (# {reportId}) has now been fixed and electricity supply restored. Status: {status}.";
+                    
+                    if (reporter != "Anonymous")
+                    {
+                        _notifService.SendNotification(reporter, messageToReporter);
+                        MessageBox.Show("Approval acknowledged. The original reporter has been notified.", "Status Approved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Status update approved. Reporter was anonymous, so no user notification sent.", "Approved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    
+                    // Mark the manager's approval notification as read
+                    _notifService.MarkAsRead(notifId);
+                    LoadNotifications();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Could not parse notification details for approval.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

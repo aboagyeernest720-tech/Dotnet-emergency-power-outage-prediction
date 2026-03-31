@@ -55,6 +55,14 @@ namespace SmartPowerOutageSystem.Forms
 
                     if (_outageService.SaveReport(report))
                     {
+                        // Notify managers
+                        var uService = new UserService();
+                        var nService = new NotificationService();
+                        foreach (var manager in uService.GetUsersByRole("Manager"))
+                        {
+                            nService.SendNotification(manager, $"Urgent: A new {report.OutageType} outage report was just submitted for {report.Location}.");
+                        }
+
                         MessageBox.Show("Power outage report submitted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Close();
                     }

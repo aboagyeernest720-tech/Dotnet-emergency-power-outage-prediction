@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SmartPowerOutageSystem")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c7f1af31b376acc1b7246261deee05fc26894f52")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c23f85e8839bac65c6311e7660600f4a9aebfe17")]
 [assembly: System.Reflection.AssemblyProductAttribute("SmartPowerOutageSystem")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SmartPowerOutageSystem")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -164,7 +164,7 @@ namespace SmartPowerOutageSystem.Forms
             cmbRole.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbRole.Font = new Font("Segoe UI", 11F);
             cmbRole.FormattingEnabled = true;
-            cmbRole.Items.AddRange(new object[] { "Administrator", "Manager", "Technician", "Dispatcher", "User" });
+            cmbRole.Items.AddRange(new object[] { "Manager", "Technician" });
             cmbRole.Location = new Point(20, 200);
             cmbRole.Name = "cmbRole";
             cmbRole.Size = new Size(310, 33);

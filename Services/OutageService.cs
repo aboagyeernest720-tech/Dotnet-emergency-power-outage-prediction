@@ -115,14 +115,19 @@ namespace SmartPowerOutageSystem.Services
 
             bool success = cmd.ExecuteNonQuery() > 0;
 
-            if (success && reportedBy != "Anonymous")
+            if (success)
             {
                 var notifService = new NotificationService();
-                string message = $"Your power outage report for {location} has been updated to '{status}'.";
-                if (status == "Restored" || status == "Resolved")
-                    message = $"Great news! Power has been restored at {location}. Status: {status}.";
+                var userService = new UserService();
                 
-                notifService.SendNotification(reportedBy, message);
+                // Notify only Managers for approval
+                var managers = userService.GetUsersByRole("Manager");
+                string msgToManager = $"[AWAITING APPROVAL] Report #{id}: Status Update! Reporter: {reportedBy} | Location: {location} | New Status: {status}";
+                
+                foreach (var mgr in managers)
+                {
+                    notifService.SendNotification(mgr, msgToManager);
+                }
             }
 
             return success;
@@ -215,52 +220,93 @@ namespace SmartPowerOutageSystem.Services
             return dt;
         }
 
-        public DataTable GetRecentReports(int limit)
+        public DataTable GetRecentReports(int limit, string? technicianName = null, bool filterToday = false)
         {
             DataTable dt = new DataTable();
             using var connection = DatabaseHelper.GetConnection();
             connection.Open();
             var cmd = connection.CreateCommand();
-            cmd.CommandText = "SELECT ReportID as ID, Location, ReportDate as Date, Status FROM OutageReports ORDER BY ReportDate DESC";
+            
+            string sql = "SELECT ReportID as ID, Location, ReportDate as Date, Status FROM OutageReports";
+            string filter = "";
+            
+            if (!string.IsNullOrEmpty(technicianName))
+            {
+                filter = " WHERE AssignedTechnician = @tech";
+                cmd.Parameters.AddWithValue("@tech", technicianName);
+            }
+            
+            if (filterToday)
+            {
+                if (string.IsNullOrEmpty(filter)) filter = " WHERE ";
+                else filter += " AND ";
+                filter += " CAST(ReportDate AS DATE) = CAST(GETDATE() AS DATE)";
+            }
+
+            sql += filter + " ORDER BY ReportDate DESC";
+            
+            cmd.CommandText = sql;
             using var reader = cmd.ExecuteReader();
             dt.Load(reader);
             
-            // Limit in memory or in SQL (SQLite uses LIMIT)
             DataTable result = dt.Clone();
             for (int i = 0; i < Math.Min(limit, dt.Rows.Count); i++)
                 result.ImportRow(dt.Rows[i]);
             return result;
         }
 
-        public Dictionary<string, int> GetDashboardCounts()
+        public Dictionary<string, int> GetDashboardCounts(string? technicianName = null)
         {
             var counts = new Dictionary<string, int>();
             using var connection = DatabaseHelper.GetConnection();
             connection.Open();
-            var cmd = connection.CreateCommand();
+            
+            string techFilter = string.IsNullOrEmpty(technicianName) ? "" : " WHERE AssignedTechnician = @tech";
+            string techAndFilter = string.IsNullOrEmpty(technicianName) ? " WHERE " : " WHERE AssignedTechnician = @tech AND ";
 
-            cmd.CommandText = "SELECT COUNT(*) FROM OutageReports";
+            // Total
+            var cmd = connection.CreateCommand();
+            cmd.CommandText = "SELECT COUNT(*) FROM OutageReports" + techFilter;
+            if (!string.IsNullOrEmpty(technicianName)) cmd.Parameters.AddWithValue("@tech", technicianName);
             counts["Total"] = Convert.ToInt32(cmd.ExecuteScalar());
 
-            cmd.CommandText = "SELECT COUNT(*) FROM OutageReports WHERE Status = 'Pending'";
+            // Pending
+            cmd = connection.CreateCommand();
+            cmd.CommandText = "SELECT COUNT(*) FROM OutageReports" + techAndFilter + " Status != 'Restored' AND Status != 'Resolved'";
+            if (!string.IsNullOrEmpty(technicianName)) cmd.Parameters.AddWithValue("@tech", technicianName);
             counts["Pending"] = Convert.ToInt32(cmd.ExecuteScalar());
 
-            cmd.CommandText = "SELECT COUNT(*) FROM OutageReports WHERE Status = 'Restored' OR Status = 'Resolved'";
+            // Resolved
+            cmd = connection.CreateCommand();
+            cmd.CommandText = "SELECT COUNT(*) FROM OutageReports" + techAndFilter + " (Status = 'Restored' OR Status = 'Resolved')";
+            if (!string.IsNullOrEmpty(technicianName)) cmd.Parameters.AddWithValue("@tech", technicianName);
             counts["Resolved"] = Convert.ToInt32(cmd.ExecuteScalar());
 
-            cmd.CommandText = "SELECT COUNT(*) FROM OutageReports WHERE CAST(ReportDate AS DATE) = CAST(GETDATE() AS DATE)";
+            // Today
+            cmd = connection.CreateCommand();
+            cmd.CommandText = "SELECT COUNT(*) FROM OutageReports" + techAndFilter + " CAST(ReportDate AS DATE) = CAST(GETDATE() AS DATE)";
+            if (!string.IsNullOrEmpty(technicianName)) cmd.Parameters.AddWithValue("@tech", technicianName);
             counts["Today"] = Convert.ToInt32(cmd.ExecuteScalar());
 
             return counts;
         }
 
-        public DataTable GetTopLocationsForChart(int count)
+        public DataTable GetTopLocationsForChart(int count, string? technicianName = null)
         {
             DataTable dt = new DataTable();
             using var connection = DatabaseHelper.GetConnection();
             connection.Open();
             var cmd = connection.CreateCommand();
-            cmd.CommandText = $"SELECT TOP {count} Location, COUNT(*) as Count FROM OutageReports GROUP BY Location ORDER BY Count DESC";
+            
+            string sql = $"SELECT TOP {count} Location, COUNT(*) as Count FROM OutageReports";
+            if (!string.IsNullOrEmpty(technicianName))
+            {
+                sql += " WHERE AssignedTechnician = @tech";
+                cmd.Parameters.AddWithValue("@tech", technicianName);
+            }
+            sql += " GROUP BY Location ORDER BY Count DESC";
+            
+            cmd.CommandText = sql;
             using var reader = cmd.ExecuteReader();
             dt.Load(reader);
             return dt;
