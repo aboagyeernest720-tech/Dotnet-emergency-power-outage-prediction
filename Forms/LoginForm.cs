@@ -60,19 +60,6 @@ namespace SmartPowerOutageSystem.Forms
             Application.Exit();
         }
 
-        private void btnGuestLogin_Click(object sender, EventArgs e)
-        {
-            using (var idForm = new UserIdentificationForm())
-            {
-                if (idForm.ShowDialog() == DialogResult.OK)
-                {
-                    this.Hide();
-                    // Pass username as 'Name (Phone)' and use User dashboard
-                    var guestDashboard = new UserDashboardForm($"{idForm.UserName} ({idForm.UserPhone})");
-                    guestDashboard.Show();
-                }
-            }
-        }
         private void btnSignup_Click(object sender, EventArgs e)
         {
             using (var signupForm = new SignupForm())
@@ -84,11 +71,6 @@ namespace SmartPowerOutageSystem.Forms
                     MessageBox.Show("Registration successful! You can now log in.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-        }
-
-        private void lblSubtitle_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

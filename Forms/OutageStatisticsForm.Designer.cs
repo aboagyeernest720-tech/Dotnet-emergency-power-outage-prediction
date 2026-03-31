@@ -28,20 +28,27 @@ namespace SmartPowerOutageSystem.Forms
             pnlTotal = new Panel();
             lblTotalTitle = new Label();
             lblTotalCount = new Label();
+            lblTotalIcon = new Label();
             pnlRestored = new Panel();
             lblRestoredTitle = new Label();
             lblRestoredCount = new Label();
+            lblRestoredIcon = new Label();
             pnlActive = new Panel();
             lblActiveTitle = new Label();
             lblActiveCount = new Label();
+            lblActiveIcon = new Label();
             pnlTopLoc = new Panel();
             lblTopLocTitle = new Label();
             lblTopLocation = new Label();
             pnlGridContainer = new TableLayoutPanel();
-            grpLocation = new GroupBox();
-            dgvLocationStats = new DataGridView();
-            grpType = new GroupBox();
-            dgvTypeStats = new DataGridView();
+            pnlPieContainer = new Panel();
+            lblPieTitle = new Label();
+            pnlPieChart = new Panel();
+            pnlBarContainer = new Panel();
+            lblBarTitle = new Label();
+            pnlBarChart = new Panel();
+            pnlPrediction = new Panel();
+            lblPrediction = new Label();
             panelHeader.SuspendLayout();
             panelStats.SuspendLayout();
             pnlTotal.SuspendLayout();
@@ -49,46 +56,40 @@ namespace SmartPowerOutageSystem.Forms
             pnlActive.SuspendLayout();
             pnlTopLoc.SuspendLayout();
             pnlGridContainer.SuspendLayout();
-            grpLocation.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvLocationStats).BeginInit();
-            grpType.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvTypeStats).BeginInit();
             SuspendLayout();
-            // 
-            // panelHeader
-            // 
-            panelHeader.BackColor = Color.FromArgb(41, 128, 185);
+            panelHeader.BackColor = Color.FromArgb(17, 33, 51);
             panelHeader.Controls.Add(btnRefresh);
             panelHeader.Controls.Add(btnBack);
             panelHeader.Controls.Add(lblTitle);
             panelHeader.Dock = DockStyle.Top;
             panelHeader.Location = new Point(0, 0);
             panelHeader.Name = "panelHeader";
-            panelHeader.Size = new Size(1100, 80);
+            panelHeader.Size = new Size(1100, 100);
             panelHeader.TabIndex = 0;
             // 
             // lblTitle
             // 
             lblTitle.AutoSize = true;
-            lblTitle.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
+            lblTitle.Font = new Font("Segoe UI Semibold", 20F, FontStyle.Bold);
             lblTitle.ForeColor = Color.White;
-            lblTitle.Location = new Point(25, 15);
+            lblTitle.Location = new Point(25, 25);
             lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(380, 46);
+            lblTitle.Size = new Size(300, 46);
             lblTitle.TabIndex = 0;
-            lblTitle.Text = "OUTAGE ANALYTICS 📈";
+            lblTitle.Text = "Manage Statistics";
             // 
             // btnBack
             // 
             btnBack.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnBack.BackColor = Color.FromArgb(31, 97, 141);
+            btnBack.BackColor = Color.FromArgb(51, 65, 85);
+            btnBack.Cursor = Cursors.Hand;
             btnBack.FlatAppearance.BorderSize = 0;
             btnBack.FlatStyle = FlatStyle.Flat;
-            btnBack.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnBack.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
             btnBack.ForeColor = Color.White;
-            btnBack.Location = new Point(950, 20);
+            btnBack.Location = new Point(950, 27);
             btnBack.Name = "btnBack";
-            btnBack.Size = new Size(120, 40);
+            btnBack.Size = new Size(120, 45);
             btnBack.TabIndex = 1;
             btnBack.Text = "← BACK";
             btnBack.UseVisualStyleBackColor = false;
@@ -97,14 +98,15 @@ namespace SmartPowerOutageSystem.Forms
             // btnRefresh
             // 
             btnRefresh.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnRefresh.BackColor = Color.FromArgb(52, 152, 219);
+            btnRefresh.BackColor = Color.FromArgb(37, 99, 235);
+            btnRefresh.Cursor = Cursors.Hand;
             btnRefresh.FlatAppearance.BorderSize = 0;
             btnRefresh.FlatStyle = FlatStyle.Flat;
-            btnRefresh.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnRefresh.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
             btnRefresh.ForeColor = Color.White;
-            btnRefresh.Location = new Point(800, 20);
+            btnRefresh.Location = new Point(800, 27);
             btnRefresh.Name = "btnRefresh";
-            btnRefresh.Size = new Size(130, 40);
+            btnRefresh.Size = new Size(130, 45);
             btnRefresh.TabIndex = 2;
             btnRefresh.Text = "🔄 REFRESH";
             btnRefresh.UseVisualStyleBackColor = false;
@@ -125,116 +127,104 @@ namespace SmartPowerOutageSystem.Forms
             // 
             // pnlTotal
             // 
-            pnlTotal.BackColor = Color.White;
-            pnlTotal.BorderStyle = BorderStyle.FixedSingle;
+            pnlTotal.BackColor = Color.FromArgb(59, 89, 152);
             pnlTotal.Controls.Add(lblTotalCount);
             pnlTotal.Controls.Add(lblTotalTitle);
+            pnlTotal.Controls.Add(lblTotalIcon);
             pnlTotal.Location = new Point(30, 30);
             pnlTotal.Margin = new Padding(10);
             pnlTotal.Name = "pnlTotal";
-            pnlTotal.Size = new Size(240, 120);
+            pnlTotal.Size = new Size(240, 140);
             pnlTotal.TabIndex = 0;
-            // 
-            // lblTotalTitle
-            // 
-            lblTotalTitle.Dock = DockStyle.Top;
-            lblTotalTitle.Font = new Font("Segoe UI Semibold", 10F);
-            lblTotalTitle.ForeColor = Color.Gray;
-            lblTotalTitle.Location = new Point(0, 0);
-            lblTotalTitle.Name = "lblTotalTitle";
-            lblTotalTitle.Size = new Size(238, 40);
-            lblTotalTitle.TabIndex = 0;
-            lblTotalTitle.Text = "TOTAL REPORTS";
-            lblTotalTitle.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // lblTotalCount
-            // 
-            lblTotalCount.Dock = DockStyle.Fill;
-            lblTotalCount.Font = new Font("Segoe UI Black", 24F, FontStyle.Bold);
-            lblTotalCount.ForeColor = Color.FromArgb(41, 128, 185);
-            lblTotalCount.Location = new Point(0, 40);
-            lblTotalCount.Name = "lblTotalCount";
-            lblTotalCount.Size = new Size(238, 78);
-            lblTotalCount.TabIndex = 1;
-            lblTotalCount.Text = "0";
-            lblTotalCount.TextAlign = ContentAlignment.MiddleCenter;
+
+            lblTotalIcon.AutoSize = true;
+            lblTotalIcon.Font = new Font("Segoe UI", 28F);
+            lblTotalIcon.ForeColor = Color.White;
+            lblTotalIcon.Location = new Point(15, 15);
+            lblTotalIcon.Text = "⚡";
+
+            lblTotalTitle.Font = new Font("Segoe UI Semibold", 12F);
+            lblTotalTitle.ForeColor = Color.White;
+            lblTotalTitle.Location = new Point(90, 15);
+            lblTotalTitle.Size = new Size(130, 60);
+            lblTotalTitle.Text = "Total\r\nOutages";
+            lblTotalTitle.TextAlign = ContentAlignment.TopRight;
+
+            lblTotalCount.Font = new Font("Segoe UI Semibold", 28F, FontStyle.Bold);
+            lblTotalCount.ForeColor = Color.White;
+            lblTotalCount.Location = new Point(30, 75);
+            lblTotalCount.Size = new Size(190, 60);
+            lblTotalCount.Text = "102";
+            lblTotalCount.TextAlign = ContentAlignment.BottomRight;
             // 
             // pnlRestored
             // 
-            pnlRestored.BackColor = Color.White;
-            pnlRestored.BorderStyle = BorderStyle.FixedSingle;
+            pnlRestored.BackColor = Color.FromArgb(93, 160, 113);
             pnlRestored.Controls.Add(lblRestoredCount);
             pnlRestored.Controls.Add(lblRestoredTitle);
-            pnlRestored.Location = new Point(290, 30);
+            pnlRestored.Controls.Add(lblRestoredIcon);
+            pnlRestored.Location = new Point(550, 30);
             pnlRestored.Margin = new Padding(10);
             pnlRestored.Name = "pnlRestored";
-            pnlRestored.Size = new Size(240, 120);
-            pnlRestored.TabIndex = 1;
-            // 
-            // lblRestoredTitle
-            // 
-            lblRestoredTitle.Dock = DockStyle.Top;
-            lblRestoredTitle.Font = new Font("Segoe UI Semibold", 10F);
-            lblRestoredTitle.ForeColor = Color.Gray;
-            lblRestoredTitle.Location = new Point(0, 0);
-            lblRestoredTitle.Name = "lblRestoredTitle";
-            lblRestoredTitle.Size = new Size(238, 40);
-            lblRestoredTitle.TabIndex = 0;
-            lblRestoredTitle.Text = "RESTORED";
-            lblRestoredTitle.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // lblRestoredCount
-            // 
-            lblRestoredCount.Dock = DockStyle.Fill;
-            lblRestoredCount.Font = new Font("Segoe UI Black", 24F, FontStyle.Bold);
-            lblRestoredCount.ForeColor = Color.FromArgb(46, 204, 113);
-            lblRestoredCount.Location = new Point(0, 40);
-            lblRestoredCount.Name = "lblRestoredCount";
-            lblRestoredCount.Size = new Size(238, 78);
-            lblRestoredCount.TabIndex = 1;
-            lblRestoredCount.Text = "0";
-            lblRestoredCount.TextAlign = ContentAlignment.MiddleCenter;
+            pnlRestored.Size = new Size(240, 140);
+            pnlRestored.TabIndex = 2;
+
+            lblRestoredIcon.AutoSize = true;
+            lblRestoredIcon.Font = new Font("Segoe UI", 28F);
+            lblRestoredIcon.ForeColor = Color.White;
+            lblRestoredIcon.Location = new Point(15, 15);
+            lblRestoredIcon.Text = "✔";
+
+            lblRestoredTitle.Font = new Font("Segoe UI Semibold", 12F);
+            lblRestoredTitle.ForeColor = Color.White;
+            lblRestoredTitle.Location = new Point(90, 15);
+            lblRestoredTitle.Size = new Size(130, 60);
+            lblRestoredTitle.Text = "Resolved\r\nOutages";
+            lblRestoredTitle.TextAlign = ContentAlignment.TopRight;
+
+            lblRestoredCount.Font = new Font("Segoe UI Semibold", 28F, FontStyle.Bold);
+            lblRestoredCount.ForeColor = Color.White;
+            lblRestoredCount.Location = new Point(30, 75);
+            lblRestoredCount.Size = new Size(190, 60);
+            lblRestoredCount.Text = "77";
+            lblRestoredCount.TextAlign = ContentAlignment.BottomRight;
             // 
             // pnlActive
             // 
-            pnlActive.BackColor = Color.White;
-            pnlActive.BorderStyle = BorderStyle.FixedSingle;
+            pnlActive.BackColor = Color.FromArgb(211, 131, 59);
             pnlActive.Controls.Add(lblActiveCount);
             pnlActive.Controls.Add(lblActiveTitle);
-            pnlActive.Location = new Point(550, 30);
+            pnlActive.Controls.Add(lblActiveIcon);
+            pnlActive.Location = new Point(290, 30);
             pnlActive.Margin = new Padding(10);
             pnlActive.Name = "pnlActive";
-            pnlActive.Size = new Size(240, 120);
-            pnlActive.TabIndex = 2;
-            // 
-            // lblActiveTitle
-            // 
-            lblActiveTitle.Dock = DockStyle.Top;
-            lblActiveTitle.Font = new Font("Segoe UI Semibold", 10F);
-            lblActiveTitle.ForeColor = Color.Gray;
-            lblActiveTitle.Location = new Point(0, 0);
-            lblActiveTitle.Name = "lblActiveTitle";
-            lblActiveTitle.Size = new Size(238, 40);
-            lblActiveTitle.TabIndex = 0;
-            lblActiveTitle.Text = "ACTIVE OUTAGES";
-            lblActiveTitle.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // lblActiveCount
-            // 
-            lblActiveCount.Dock = DockStyle.Fill;
-            lblActiveCount.Font = new Font("Segoe UI Black", 24F, FontStyle.Bold);
-            lblActiveCount.ForeColor = Color.FromArgb(231, 76, 60);
-            lblActiveCount.Location = new Point(0, 40);
-            lblActiveCount.Name = "lblActiveCount";
-            lblActiveCount.Size = new Size(238, 78);
-            lblActiveCount.TabIndex = 1;
-            lblActiveCount.Text = "0";
-            lblActiveCount.TextAlign = ContentAlignment.MiddleCenter;
+            pnlActive.Size = new Size(240, 140);
+            pnlActive.TabIndex = 1;
+
+            lblActiveIcon.AutoSize = true;
+            lblActiveIcon.Font = new Font("Segoe UI", 28F);
+            lblActiveIcon.ForeColor = Color.White;
+            lblActiveIcon.Location = new Point(15, 15);
+            lblActiveIcon.Text = "⌛";
+
+            lblActiveTitle.Font = new Font("Segoe UI Semibold", 12F);
+            lblActiveTitle.ForeColor = Color.White;
+            lblActiveTitle.Location = new Point(90, 15);
+            lblActiveTitle.Size = new Size(130, 60);
+            lblActiveTitle.Text = "Pending\r\nOutages";
+            lblActiveTitle.TextAlign = ContentAlignment.TopRight;
+
+            lblActiveCount.Font = new Font("Segoe UI Semibold", 28F, FontStyle.Bold);
+            lblActiveCount.ForeColor = Color.White;
+            lblActiveCount.Location = new Point(30, 75);
+            lblActiveCount.Size = new Size(190, 60);
+            lblActiveCount.Text = "25";
+            lblActiveCount.TextAlign = ContentAlignment.BottomRight;
             // 
             // pnlTopLoc
             // 
             pnlTopLoc.BackColor = Color.White;
-            pnlTopLoc.BorderStyle = BorderStyle.FixedSingle;
+            pnlTopLoc.BorderStyle = BorderStyle.None;
             pnlTopLoc.Controls.Add(lblTopLocation);
             pnlTopLoc.Controls.Add(lblTopLocTitle);
             pnlTopLoc.Location = new Point(810, 30);
@@ -269,20 +259,53 @@ namespace SmartPowerOutageSystem.Forms
             // 
             // pnlGridContainer
             // 
-            pnlGridContainer.ColumnCount = 2;
-            pnlGridContainer.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            pnlGridContainer.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            pnlGridContainer.Controls.Add(grpLocation, 0, 0);
-            pnlGridContainer.Controls.Add(grpType, 1, 0);
+            pnlGridContainer.ColumnCount = 1;
+            pnlGridContainer.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            pnlGridContainer.Controls.Add(pnlPieContainer, 0, 0);
+            pnlGridContainer.Controls.Add(pnlBarContainer, 0, 1);
             pnlGridContainer.Dock = DockStyle.Fill;
             pnlGridContainer.Location = new Point(0, 260);
             pnlGridContainer.Name = "pnlGridContainer";
             pnlGridContainer.Padding = new Padding(30);
-            pnlGridContainer.RowCount = 2; // Change to 2 rows
-            pnlGridContainer.RowStyles.Add(new RowStyle(SizeType.Percent, 80F));
-            pnlGridContainer.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            pnlGridContainer.Size = new Size(1100, 440);
+            pnlGridContainer.RowCount = 2;
+            pnlGridContainer.RowStyles.Add(new RowStyle(SizeType.Percent, 45F));
+            pnlGridContainer.RowStyles.Add(new RowStyle(SizeType.Percent, 55F));
+            pnlGridContainer.Size = new Size(1100, 740); // Increased Height
             pnlGridContainer.TabIndex = 2;
+
+            pnlPieContainer = new Panel();
+            pnlPieContainer.BackColor = Color.White;
+            pnlPieContainer.Dock = DockStyle.Fill;
+            pnlPieContainer.Margin = new Padding(10);
+            pnlPieContainer.Controls.Add(lblPieTitle);
+            pnlPieContainer.Controls.Add(pnlPieChart);
+
+            lblPieTitle.Text = "Outage Status Breakdown";
+            lblPieTitle.Font = new Font("Segoe UI Semibold", 12F);
+            lblPieTitle.Location = new Point(10, 10);
+            lblPieTitle.Size = new Size(300, 30);
+
+            pnlPieChart = new Panel();
+            pnlPieChart.Location = new Point(30, 45);
+            pnlPieChart.Size = new Size(400, 250);
+            pnlPieChart.Paint += PnlPieChart_Paint;
+
+            pnlBarContainer = new Panel();
+            pnlBarContainer.BackColor = Color.White;
+            pnlBarContainer.Dock = DockStyle.Fill;
+            pnlBarContainer.Margin = new Padding(10);
+            pnlBarContainer.Controls.Add(lblBarTitle);
+            pnlBarContainer.Controls.Add(pnlBarChart);
+
+            lblBarTitle.Text = "Outages by Location";
+            lblBarTitle.Font = new Font("Segoe UI Semibold", 12F);
+            lblBarTitle.Location = new Point(10, 10);
+            lblBarTitle.Size = new Size(300, 30);
+
+            pnlBarChart = new Panel();
+            pnlBarChart.Location = new Point(30, 45);
+            pnlBarChart.Size = new Size(950, 300);
+            pnlBarChart.Paint += PnlBarChart_Paint;
 
             // 
             // pnlPrediction
@@ -308,52 +331,7 @@ namespace SmartPowerOutageSystem.Forms
             lblPrediction.TextAlign = ContentAlignment.MiddleCenter;
             pnlPrediction.Controls.Add(lblPrediction);
 
-            // 
-            // grpLocation
-            // 
-            grpLocation.Controls.Add(dgvLocationStats);
-            grpLocation.Dock = DockStyle.Fill;
-            grpLocation.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            grpLocation.Location = new Point(40, 40);
-            grpLocation.Margin = new Padding(10);
-            grpLocation.Name = "grpLocation";
-            grpLocation.Size = new Size(500, 360);
-            grpLocation.TabIndex = 0;
-            grpLocation.TabStop = false;
-            grpLocation.Text = "Outages by Location";
-            // 
-            // dgvLocationStats
-            // 
-            dgvLocationStats.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvLocationStats.Dock = DockStyle.Fill;
-            dgvLocationStats.Location = new Point(3, 26);
-            dgvLocationStats.Name = "dgvLocationStats";
-            dgvLocationStats.RowHeadersWidth = 51;
-            dgvLocationStats.Size = new Size(494, 331);
-            dgvLocationStats.TabIndex = 0;
-            // 
-            // grpType
-            // 
-            grpType.Controls.Add(dgvTypeStats);
-            grpType.Dock = DockStyle.Fill;
-            grpType.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            grpType.Location = new Point(560, 40);
-            grpType.Margin = new Padding(10);
-            grpType.Name = "grpType";
-            grpType.Size = new Size(500, 360);
-            grpType.TabIndex = 1;
-            grpType.TabStop = false;
-            grpType.Text = "Outage Type Distribution";
-            // 
-            // dgvTypeStats
-            // 
-            dgvTypeStats.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvTypeStats.Dock = DockStyle.Fill;
-            dgvTypeStats.Location = new Point(3, 26);
-            dgvTypeStats.Name = "dgvTypeStats";
-            dgvTypeStats.RowHeadersWidth = 51;
-            dgvTypeStats.Size = new Size(494, 331);
-            dgvTypeStats.TabIndex = 0;
+            // Legacy grids removed
             // 
             // OutageStatisticsForm
             // 
@@ -376,10 +354,6 @@ namespace SmartPowerOutageSystem.Forms
             pnlActive.ResumeLayout(false);
             pnlTopLoc.ResumeLayout(false);
             pnlGridContainer.ResumeLayout(false);
-            grpLocation.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dgvLocationStats).EndInit();
-            grpType.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dgvTypeStats).EndInit();
             ResumeLayout(false);
         }
 
@@ -393,20 +367,25 @@ namespace SmartPowerOutageSystem.Forms
         private Panel pnlTotal;
         private Label lblTotalTitle;
         private Label lblTotalCount;
+        private Label lblTotalIcon;
         private Panel pnlRestored;
         private Label lblRestoredTitle;
         private Label lblRestoredCount;
+        private Label lblRestoredIcon;
         private Panel pnlActive;
         private Label lblActiveTitle;
         private Label lblActiveCount;
+        private Label lblActiveIcon;
         private Panel pnlTopLoc;
         private Label lblTopLocTitle;
         private Label lblTopLocation;
         private TableLayoutPanel pnlGridContainer;
-        private GroupBox grpLocation;
-        private DataGridView dgvLocationStats;
-        private GroupBox grpType;
-        private DataGridView dgvTypeStats;
+        private Panel pnlPieContainer;
+        private Label lblPieTitle;
+        private Panel pnlPieChart;
+        private Panel pnlBarContainer;
+        private Label lblBarTitle;
+        private Panel pnlBarChart;
         private Panel pnlPrediction;
         private Label lblPrediction;
     }

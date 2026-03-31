@@ -82,12 +82,26 @@ namespace SmartPowerOutageSystem.Data
                 );
             ";
             cmdOperations.ExecuteNonQuery();
+            
+            // Create Notifications table
+            var cmdNotifications = connection.CreateCommand();
+            cmdNotifications.CommandText = @"
+                IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = 'Notifications')
+                CREATE TABLE Notifications (
+                    NotificationID INT PRIMARY KEY IDENTITY(1,1),
+                    Username NVARCHAR(255) NOT NULL,
+                    Message NVARCHAR(MAX) NOT NULL,
+                    Date DATETIME DEFAULT GETDATE(),
+                    IsRead BIT DEFAULT 0
+                );
+            ";
+            cmdNotifications.ExecuteNonQuery();
 
             // Seed 16 Regions of Ghana
             string[] ghanaregions = { 
-                "Greater Accra", "Ashanti", "Western", "Eastern", "Central", 
-                "Volta", "Northern", "Upper East", "Upper West", "Savannah", 
-                "North East", "Bono", "Bono East", "Ahafo", "Oti", "Western North" 
+                "Greater Accra Region", "Ashanti Region", "Western Region", "Eastern Region", "Central Region", 
+                "Volta Region", "Northern Region", "Upper East Region", "Upper West Region", "Savannah Region", 
+                "North East Region", "Bono Region", "Bono East Region", "Ahafo Region", "Oti Region", "Western North Region" 
             };
             
             foreach (var region in ghanaregions)

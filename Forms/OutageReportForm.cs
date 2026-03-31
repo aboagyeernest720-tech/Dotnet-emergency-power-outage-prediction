@@ -27,7 +27,7 @@ namespace SmartPowerOutageSystem.Forms
                 cmbLocation.Items.Clear();
                 foreach (DataRow row in dt.Rows)
                 {
-                    cmbLocation.Items.Add(row["LocationName"].ToString());
+                    cmbLocation.Items.Add(row["LocationName"]?.ToString() ?? "Unknown");
                 }
             }
             catch (Exception ex)

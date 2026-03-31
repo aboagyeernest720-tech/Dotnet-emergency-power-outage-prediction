@@ -24,7 +24,6 @@ namespace SmartPowerOutageSystem.Forms
             lblTitle = new Label();
             panelContent = new Panel();
             btnSignup = new Button();
-            btnGuestLogin = new Button();
             btnExit = new Button();
             btnLogin = new Button();
             lblPassword = new Label();
@@ -37,43 +36,42 @@ namespace SmartPowerOutageSystem.Forms
             // 
             // panelHeader
             // 
-            panelHeader.BackColor = Color.FromArgb(63, 81, 181);
+            panelHeader.BackColor = Color.FromArgb(17, 33, 51); // Premium Deep Blue
             panelHeader.Controls.Add(lblSubtitle);
             panelHeader.Controls.Add(lblTitle);
             panelHeader.Dock = DockStyle.Top;
             panelHeader.Location = new Point(0, 0);
             panelHeader.Name = "panelHeader";
-            panelHeader.Size = new Size(500, 150);
+            panelHeader.Size = new Size(500, 160);
             panelHeader.TabIndex = 0;
+            // 
+            // lblTitle
+            // 
+            lblTitle.AutoSize = false;
+            lblTitle.Font = new Font("Segoe UI Semibold", 16F, FontStyle.Bold);
+            lblTitle.ForeColor = Color.White;
+            lblTitle.Location = new Point(0, 40);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(500, 40);
+            lblTitle.TabIndex = 0;
+            lblTitle.Text = "Power Outage Prediction System";
+            lblTitle.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lblSubtitle
             // 
             lblSubtitle.AutoSize = true;
-            lblSubtitle.Font = new Font("Segoe UI", 10F);
-            lblSubtitle.ForeColor = Color.FromArgb(197, 202, 233);
-            lblSubtitle.Location = new Point(125, 85);
+            lblSubtitle.Font = new Font("Segoe UI", 11F);
+            lblSubtitle.ForeColor = Color.FromArgb(148, 163, 184);
+            lblSubtitle.Location = new Point(115, 95);
             lblSubtitle.Name = "lblSubtitle";
-            lblSubtitle.Size = new Size(241, 23);
+            lblSubtitle.Size = new Size(248, 25);
             lblSubtitle.TabIndex = 1;
-            lblSubtitle.Text = "Prediction & Monitoring System";
-            lblSubtitle.Click += lblSubtitle_Click;
-            // 
-            // lblTitle
-            // 
-            lblTitle.AutoSize = true;
-            lblTitle.Font = new Font("Segoe UI Black", 22F, FontStyle.Bold);
-            lblTitle.ForeColor = Color.White;
-            lblTitle.Location = new Point(35, 35);
-            lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(423, 50);
-            lblTitle.TabIndex = 0;
-            lblTitle.Text = "POWER MONITORING";
+            lblSubtitle.Text = "Power Intelligence System";
             // 
             // panelContent
             // 
             panelContent.BackColor = Color.White;
             panelContent.Controls.Add(btnSignup);
-            panelContent.Controls.Add(btnGuestLogin);
             panelContent.Controls.Add(btnExit);
             panelContent.Controls.Add(btnLogin);
             panelContent.Controls.Add(lblPassword);
@@ -89,39 +87,24 @@ namespace SmartPowerOutageSystem.Forms
             // 
             // btnSignup
             // 
-            btnSignup.BackColor = Color.FromArgb(238, 238, 238);
-            btnSignup.FlatAppearance.BorderSize = 0;
+            btnSignup.BackColor = Color.Transparent;
+            btnSignup.Cursor = Cursors.Hand;
+            btnSignup.FlatAppearance.BorderColor = Color.FromArgb(203, 213, 225);
             btnSignup.FlatStyle = FlatStyle.Flat;
-            btnSignup.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
-            btnSignup.Location = new Point(80, 270);
+            btnSignup.Font = new Font("Segoe UI Semibold", 10F);
+            btnSignup.ForeColor = Color.FromArgb(71, 85, 105);
+            btnSignup.Location = new Point(80, 290);
             btnSignup.Name = "btnSignup";
             btnSignup.Size = new Size(340, 45);
             btnSignup.TabIndex = 5;
-            btnSignup.Text = "S I G N  U P";
+            btnSignup.Text = "Create New Account";
             btnSignup.UseVisualStyleBackColor = false;
-            btnSignup.Click += btnSignup_Click;
-            // 
-            // btnGuestLogin
-            // 
-            btnGuestLogin.FlatAppearance.BorderSize = 0;
-            btnGuestLogin.FlatStyle = FlatStyle.Flat;
-            btnGuestLogin.Font = new Font("Segoe UI", 9F, FontStyle.Underline);
-            btnGuestLogin.ForeColor = Color.FromArgb(63, 81, 181);
-            btnGuestLogin.Location = new Point(125, 420);
-            btnGuestLogin.Name = "btnGuestLogin";
-            btnGuestLogin.Size = new Size(250, 30);
-            btnGuestLogin.TabIndex = 7;
-            btnGuestLogin.Text = "Login as Regular User (Guest)";
-            btnGuestLogin.UseVisualStyleBackColor = true;
-            btnGuestLogin.Click += btnGuestLogin_Click;
-            // 
-            // btnExit
-            // 
             btnExit.BackColor = Color.FromArgb(238, 238, 238);
+            btnExit.Cursor = Cursors.Hand;
             btnExit.FlatAppearance.BorderSize = 0;
             btnExit.FlatStyle = FlatStyle.Flat;
             btnExit.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
-            btnExit.Location = new Point(80, 325);
+            btnExit.Location = new Point(80, 360);
             btnExit.Name = "btnExit";
             btnExit.Size = new Size(340, 45);
             btnExit.TabIndex = 6;
@@ -131,16 +114,17 @@ namespace SmartPowerOutageSystem.Forms
             // 
             // btnLogin
             // 
-            btnLogin.BackColor = Color.FromArgb(63, 81, 181);
+            btnLogin.BackColor = Color.FromArgb(37, 99, 235); // Modern Blue
+            btnLogin.Cursor = Cursors.Hand;
             btnLogin.FlatAppearance.BorderSize = 0;
             btnLogin.FlatStyle = FlatStyle.Flat;
-            btnLogin.Font = new Font("Segoe UI Black", 11F, FontStyle.Bold);
+            btnLogin.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             btnLogin.ForeColor = Color.White;
-            btnLogin.Location = new Point(80, 210);
+            btnLogin.Location = new Point(80, 220);
             btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(340, 50);
+            btnLogin.Size = new Size(340, 55);
             btnLogin.TabIndex = 4;
-            btnLogin.Text = "L O G I N";
+            btnLogin.Text = "LOG IN";
             btnLogin.UseVisualStyleBackColor = false;
             btnLogin.Click += btnLogin_Click;
             // 
@@ -198,7 +182,7 @@ namespace SmartPowerOutageSystem.Forms
             FormBorderStyle = FormBorderStyle.None;
             Name = "LoginForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Login - Smart Power Monitoring";
+            Text = "Login - Power Outage Prediction System";
             panelHeader.ResumeLayout(false);
             panelHeader.PerformLayout();
             panelContent.ResumeLayout(false);
@@ -217,7 +201,6 @@ namespace SmartPowerOutageSystem.Forms
         private TextBox txtPassword;
         private Button btnLogin;
         private Button btnExit;
-        private Button btnGuestLogin;
         private Button btnSignup;
     }
 }

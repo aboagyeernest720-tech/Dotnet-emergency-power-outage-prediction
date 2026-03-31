@@ -39,16 +39,13 @@ namespace SmartPowerOutageSystem.Forms
             panelHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)errorProvider).BeginInit();
             SuspendLayout();
-            // 
-            // panelHeader
-            // 
-            panelHeader.BackColor = Color.FromArgb(76, 175, 80);
+            panelHeader.BackColor = Color.FromArgb(17, 33, 51);
             panelHeader.Controls.Add(btnBack);
             panelHeader.Controls.Add(lblTitle);
             panelHeader.Dock = DockStyle.Top;
             panelHeader.Location = new Point(0, 0);
             panelHeader.Name = "panelHeader";
-            panelHeader.Size = new Size(650, 80);
+            panelHeader.Size = new Size(650, 100);
             panelHeader.TabIndex = 0;
             // 
             // btnBack
@@ -173,18 +170,17 @@ namespace SmartPowerOutageSystem.Forms
             txtReportedBy.ReadOnly = true;
             txtReportedBy.Size = new Size(570, 32);
             txtReportedBy.TabIndex = 10;
-            // 
-            // btnSave
-            // 
-            btnSave.BackColor = Color.FromArgb(76, 175, 80);
+            btnSave.BackColor = Color.FromArgb(37, 99, 235);
+            btnSave.Cursor = Cursors.Hand;
+            btnSave.FlatAppearance.BorderSize = 0;
             btnSave.FlatStyle = FlatStyle.Flat;
-            btnSave.Font = new Font("Segoe UI Bold", 11F, FontStyle.Bold);
+            btnSave.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
             btnSave.ForeColor = Color.White;
-            btnSave.Location = new Point(420, 630);
+            btnSave.Location = new Point(400, 630);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(190, 45);
+            btnSave.Size = new Size(210, 50);
             btnSave.TabIndex = 11;
-            btnSave.Text = "SAVE REPORT";
+            btnSave.Text = "SUBMIT REPORT";
             btnSave.UseVisualStyleBackColor = false;
             btnSave.Click += btnSave_Click;
             // 

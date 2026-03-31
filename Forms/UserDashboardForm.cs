@@ -46,6 +46,7 @@ namespace SmartPowerOutageSystem.Forms
             {
                 Console.WriteLine("Error checking status: " + ex.Message);
             }
+            UpdateNotificationBadge();
         }
 
         private void btnReport_Click(object sender, EventArgs e)
@@ -56,8 +57,27 @@ namespace SmartPowerOutageSystem.Forms
 
         private void btnNotifications_Click(object sender, EventArgs e)
         {
-            new PlannedOperationsForm("User", _username).ShowDialog();
+            using (var form = new NotificationsForm(_username))
+            {
+                form.ShowDialog();
+            }
             CheckStatus();
+        }
+
+        private void UpdateNotificationBadge()
+        {
+            var notifService = new NotificationService();
+            int unread = notifService.GetUnreadCount(_username);
+            if (unread > 0)
+            {
+                btnNotifications.Text = $"🔔 Notifications ({unread})";
+                btnNotifications.ForeColor = Color.Yellow;
+            }
+            else
+            {
+                btnNotifications.Text = "🔔 Notifications";
+                btnNotifications.ForeColor = Color.White;
+            }
         }
 
         private void btnSettings_Click(object sender, EventArgs e)

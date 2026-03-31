@@ -48,16 +48,22 @@ namespace SmartPowerOutageSystem.Forms
         {
             if (dgvLocations.CurrentRow != null)
             {
-                int id = Convert.ToInt32(dgvLocations.CurrentRow.Cells["LocationID"].Value);
-                string name = dgvLocations.CurrentRow.Cells["LocationName"].Value.ToString();
-
-                var confirm = MessageBox.Show($"Are you sure you want to delete location '{name}'?", "Confirm Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                if (confirm == DialogResult.OK)
+                var idVal = dgvLocations.CurrentRow.Cells["LocationID"].Value;
+                var nameVal = dgvLocations.CurrentRow.Cells["LocationName"].Value;
+                
+                if (idVal != null && idVal != DBNull.Value)
                 {
-                    if (_locationService.DeleteLocation(id))
+                    int id = Convert.ToInt32(idVal);
+                    string name = nameVal?.ToString() ?? "Unknown Location";
+
+                    var confirm = MessageBox.Show($"Are you sure you want to delete location '{name}'?", "Confirm Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    if (confirm == DialogResult.OK)
                     {
-                        MessageBox.Show("Location deleted.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LoadLocationData();
+                        if (_locationService.DeleteLocation(id))
+                        {
+                            MessageBox.Show("Location deleted.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadLocationData();
+                        }
                     }
                 }
             }

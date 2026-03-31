@@ -35,15 +35,12 @@ namespace SmartPowerOutageSystem.Forms
             ((System.ComponentModel.ISupportInitialize)dgvLocations).BeginInit();
             panelForm.SuspendLayout();
             SuspendLayout();
-            // 
-            // panelHeader
-            // 
-            panelHeader.BackColor = Color.FromArgb(121, 85, 72);
+            panelHeader.BackColor = Color.FromArgb(17, 33, 51);
             panelHeader.Controls.Add(lblTitle);
             panelHeader.Dock = DockStyle.Top;
             panelHeader.Location = new Point(0, 0);
             panelHeader.Name = "panelHeader";
-            panelHeader.Size = new Size(1000, 80);
+            panelHeader.Size = new Size(1000, 100);
             panelHeader.TabIndex = 0;
             // 
             // lblTitle
@@ -112,10 +109,9 @@ namespace SmartPowerOutageSystem.Forms
             btnDelete.Text = "Delete Location";
             btnDelete.UseVisualStyleBackColor = false;
             btnDelete.Click += btnDelete_Click;
-            // 
-            // btnSave
-            // 
-            btnSave.BackColor = Color.FromArgb(121, 85, 72);
+            btnSave.BackColor = Color.FromArgb(37, 99, 235);
+            btnSave.Cursor = Cursors.Hand;
+            btnSave.FlatAppearance.BorderSize = 0;
             btnSave.FlatStyle = FlatStyle.Flat;
             btnSave.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
             btnSave.ForeColor = Color.White;
@@ -123,7 +119,7 @@ namespace SmartPowerOutageSystem.Forms
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(310, 45);
             btnSave.TabIndex = 4;
-            btnSave.Text = "Add Location";
+            btnSave.Text = "Add New Location";
             btnSave.UseVisualStyleBackColor = false;
             btnSave.Click += btnSave_Click;
             // 

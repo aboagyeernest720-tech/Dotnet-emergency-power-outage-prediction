@@ -29,10 +29,7 @@ namespace SmartPowerOutageSystem.Forms
             panelContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvRestoration).BeginInit();
             SuspendLayout();
-            // 
-            // panelHeader
-            // 
-            panelHeader.BackColor = Color.FromArgb(0, 150, 136);
+            panelHeader.BackColor = Color.FromArgb(17, 33, 51);
             panelHeader.Controls.Add(btnBack);
             panelHeader.Controls.Add(lblSubtitle);
             panelHeader.Controls.Add(lblTitle);
@@ -55,17 +52,14 @@ namespace SmartPowerOutageSystem.Forms
             btnBack.Text = "← DASHBOARD";
             btnBack.UseVisualStyleBackColor = true;
             btnBack.Click += btnBack_Click;
-            // 
-            // lblTitle
-            // 
             lblTitle.AutoSize = true;
-            lblTitle.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
+            lblTitle.Font = new Font("Segoe UI Semibold", 20F, FontStyle.Bold);
             lblTitle.ForeColor = Color.White;
             lblTitle.Location = new Point(30, 20);
             lblTitle.Name = "lblTitle";
             lblTitle.Size = new Size(545, 46);
             lblTitle.TabIndex = 0;
-            lblTitle.Text = "POWER RESTORATION TRACKER";
+            lblTitle.Text = "⚡ RESTORATION METRICS";
             // 
             // lblSubtitle
             // 
@@ -86,22 +80,23 @@ namespace SmartPowerOutageSystem.Forms
             panelContent.Padding = new Padding(25);
             panelContent.Size = new Size(1100, 550);
             panelContent.TabIndex = 1;
-            // 
-            // dgvRestoration
-            // 
             dgvRestoration.AllowUserToAddRows = false;
             dgvRestoration.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvRestoration.BackgroundColor = Color.White;
+            dgvRestoration.BorderStyle = BorderStyle.None;
             dgvRestoration.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvRestoration.Dock = DockStyle.Fill;
             dgvRestoration.Location = new Point(25, 25);
             dgvRestoration.Name = "dgvRestoration";
             dgvRestoration.ReadOnly = true;
             dgvRestoration.RowHeadersVisible = false;
-            dgvRestoration.RowHeadersWidth = 51;
             dgvRestoration.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvRestoration.Size = new Size(1050, 500);
             dgvRestoration.TabIndex = 0;
+            dgvRestoration.EnableHeadersVisualStyles = false;
+            dgvRestoration.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(37, 99, 235);
+            dgvRestoration.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvRestoration.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
             // 
             // RestorationTrackingForm
             // 

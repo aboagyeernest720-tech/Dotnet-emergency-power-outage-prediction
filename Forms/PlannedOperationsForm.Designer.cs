@@ -37,22 +37,23 @@ namespace SmartPowerOutageSystem.Forms
             ((System.ComponentModel.ISupportInitialize)(this.dgvOperations)).BeginInit();
             this.panelInput.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // dgvOperations
-            // 
             this.dgvOperations.AllowUserToAddRows = false;
             this.dgvOperations.AllowUserToDeleteRows = false;
             this.dgvOperations.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvOperations.BackgroundColor = System.Drawing.Color.White;
+            this.dgvOperations.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvOperations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvOperations.Location = new System.Drawing.Point(30, 80);
+            this.dgvOperations.Location = new System.Drawing.Point(30, 100);
             this.dgvOperations.Name = "dgvOperations";
             this.dgvOperations.ReadOnly = true;
-            this.dgvOperations.RowHeadersWidth = 51;
-            this.dgvOperations.RowTemplate.Height = 29;
+            this.dgvOperations.RowHeadersVisible = false;
             this.dgvOperations.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvOperations.Size = new System.Drawing.Size(900, 250);
+            this.dgvOperations.Size = new System.Drawing.Size(900, 230);
             this.dgvOperations.TabIndex = 0;
+            this.dgvOperations.EnableHeadersVisualStyles = false;
+            this.dgvOperations.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(37, 99, 235);
+            this.dgvOperations.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White;
+            this.dgvOperations.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10, System.Drawing.FontStyle.Bold);
             // 
             // panelInput
             // 
@@ -209,18 +210,18 @@ namespace SmartPowerOutageSystem.Forms
             this.lblHeader.Name = "lblHeader";
             this.lblHeader.Size = new System.Drawing.Size(273, 37);
             this.lblHeader.TabIndex = 2;
-            this.lblHeader.Text = "Planned Operations";
+            this.lblHeader.Text = "System Notifications & Operations";
             // 
             // PlannedOperationsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(242)))), ((int)(((byte)(245)))));
+            this.BackColor = System.Drawing.Color.FromArgb(241, 245, 249);
             this.ClientSize = new System.Drawing.Size(960, 680);
-            this.Controls.Add(this.lblHeader);
             this.Controls.Add(this.panelInput);
             this.Controls.Add(this.dgvOperations);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Controls.Add(this.lblHeader);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "PlannedOperationsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Planned Operations";

@@ -184,7 +184,7 @@ namespace SmartPowerOutageSystem.Forms
             cmbLocation.Items.Add("All Regions");
             foreach (System.Data.DataRow row in dt.Rows)
             {
-                cmbLocation.Items.Add(row["LocationName"].ToString());
+                cmbLocation.Items.Add(row["LocationName"]?.ToString() ?? "Unknown");
             }
             if (cmbLocation.Items.Count > 0)
                 cmbLocation.SelectedIndex = 0;
@@ -229,19 +229,23 @@ namespace SmartPowerOutageSystem.Forms
         {
             if (dgvOperations.SelectedRows.Count > 0)
             {
-                int id = (int)dgvOperations.SelectedRows[0].Cells["OperationID"].Value;
-                
-                var confirm = MessageBox.Show("Are you sure you want to delete this operation?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (confirm == DialogResult.Yes)
+                var cellValue = dgvOperations.SelectedRows[0].Cells["OperationID"].Value;
+                if (cellValue != null && cellValue != DBNull.Value)
                 {
-                    if (_operationService.DeleteOperation(id))
+                    int id = Convert.ToInt32(cellValue);
+                    
+                    var confirm = MessageBox.Show("Are you sure you want to delete this operation?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (confirm == DialogResult.Yes)
                     {
-                        MessageBox.Show("Operation deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LoadOperations();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Failed to delete operation.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        if (_operationService.DeleteOperation(id))
+                        {
+                            MessageBox.Show("Operation deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadOperations();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to delete operation.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
             }

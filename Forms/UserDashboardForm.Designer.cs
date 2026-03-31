@@ -49,10 +49,7 @@ namespace SmartPowerOutageSystem.Forms
             pnlStatusCard.SuspendLayout();
             pnlNotif.SuspendLayout();
             SuspendLayout();
-            // 
-            // panelSidebar
-            // 
-            panelSidebar.BackColor = Color.FromArgb(41, 128, 185);
+            panelSidebar.BackColor = Color.FromArgb(30, 41, 59); // Dark blue sidebar
             panelSidebar.Controls.Add(btnSettings);
             panelSidebar.Controls.Add(btnNotifications);
             panelSidebar.Controls.Add(btnReport);
@@ -62,17 +59,17 @@ namespace SmartPowerOutageSystem.Forms
             panelSidebar.Dock = DockStyle.Left;
             panelSidebar.Location = new Point(0, 0);
             panelSidebar.Name = "panelSidebar";
-            panelSidebar.Size = new Size(250, 720);
+            panelSidebar.Size = new Size(260, 720);
             panelSidebar.TabIndex = 0;
             // 
             // panelLogo
             // 
-            panelLogo.BackColor = Color.FromArgb(41, 128, 185);
+            panelLogo.BackColor = Color.FromArgb(17, 33, 51);
             panelLogo.Controls.Add(lblLogo);
             panelLogo.Dock = DockStyle.Top;
             panelLogo.Location = new Point(0, 0);
             panelLogo.Name = "panelLogo";
-            panelLogo.Size = new Size(250, 100);
+            panelLogo.Size = new Size(260, 100);
             panelLogo.TabIndex = 1;
             // 
             // lblLogo
@@ -84,12 +81,12 @@ namespace SmartPowerOutageSystem.Forms
             lblLogo.Name = "lblLogo";
             lblLogo.Size = new Size(250, 100);
             lblLogo.TabIndex = 0;
-            lblLogo.Text = "SMART POWER\r\nUSER LOGIN";
+            lblLogo.Text = "OUTAGE PREDICTION\r\nUSER PORTAL";
             lblLogo.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // btnDashboard
             // 
-            btnDashboard.BackColor = Color.FromArgb(52, 152, 219);
+            btnDashboard.BackColor = Color.FromArgb(37, 99, 235);
             btnDashboard.Dock = DockStyle.Top;
             btnDashboard.FlatAppearance.BorderSize = 0;
             btnDashboard.FlatStyle = FlatStyle.Flat;
@@ -97,9 +94,9 @@ namespace SmartPowerOutageSystem.Forms
             btnDashboard.ForeColor = Color.White;
             btnDashboard.Location = new Point(0, 100);
             btnDashboard.Name = "btnDashboard";
-            btnDashboard.Size = new Size(250, 50);
+            btnDashboard.Size = new Size(260, 55);
             btnDashboard.TabIndex = 2;
-            btnDashboard.Text = "🏠 Dashboard";
+            btnDashboard.Text = "  🏠   User Dashboard";
             btnDashboard.TextAlign = ContentAlignment.MiddleLeft;
             btnDashboard.Padding = new Padding(20, 0, 0, 0);
             btnDashboard.UseVisualStyleBackColor = false;
@@ -174,28 +171,37 @@ namespace SmartPowerOutageSystem.Forms
             // 
             // panelTop
             // 
-            panelTop.BackColor = Color.White;
+            panelTop.BackColor = Color.FromArgb(17, 33, 51);
             panelTop.Controls.Add(btnExit);
             panelTop.Controls.Add(lblWelcome);
             panelTop.Controls.Add(lblTitle);
             panelTop.Dock = DockStyle.Top;
-            panelTop.Location = new Point(250, 0);
+            panelTop.Location = new Point(260, 0);
             panelTop.Name = "panelTop";
-            panelTop.Size = new Size(774, 80);
+            panelTop.Size = new Size(764, 100);
             panelTop.TabIndex = 1;
+            lblTitle.AutoSize = true;
+            lblTitle.Font = new Font("Segoe UI Semibold", 16F, FontStyle.Bold);
+            lblTitle.ForeColor = Color.White;
+            lblTitle.Location = new Point(25, 30);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(450, 40);
+            lblTitle.TabIndex = 0;
+            lblTitle.Text = "Power Outage Prediction System";
             // 
             // btnExit
             // 
             btnExit.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnExit.Cursor = Cursors.Hand;
             btnExit.FlatAppearance.BorderSize = 0;
             btnExit.FlatStyle = FlatStyle.Flat;
-            btnExit.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
-            btnExit.ForeColor = Color.FromArgb(189, 195, 199);
-            btnExit.Location = new Point(720, 10);
+            btnExit.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnExit.ForeColor = Color.White;
+            btnExit.Location = new Point(710, 25);
             btnExit.Name = "btnExit";
             btnExit.Size = new Size(40, 40);
             btnExit.TabIndex = 2;
-            btnExit.Text = "×";
+            btnExit.Text = "✕";
             btnExit.UseVisualStyleBackColor = true;
             btnExit.Click += btnExit_Click;
             // 
@@ -203,24 +209,13 @@ namespace SmartPowerOutageSystem.Forms
             // 
             lblWelcome.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblWelcome.Font = new Font("Segoe UI Semibold", 10F);
-            lblWelcome.ForeColor = Color.FromArgb(127, 140, 141);
-            lblWelcome.Location = new Point(410, 30);
+            lblWelcome.ForeColor = Color.FromArgb(148, 163, 184);
+            lblWelcome.Location = new Point(450, 35);
             lblWelcome.Name = "lblWelcome";
             lblWelcome.Size = new Size(250, 30);
             lblWelcome.TabIndex = 1;
             lblWelcome.Text = "Welcome, User";
             lblWelcome.TextAlign = ContentAlignment.MiddleRight;
-            // 
-            // lblTitle
-            // 
-            lblTitle.AutoSize = true;
-            lblTitle.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            lblTitle.ForeColor = Color.FromArgb(41, 128, 185);
-            lblTitle.Location = new Point(25, 20);
-            lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(207, 41);
-            lblTitle.TabIndex = 0;
-            lblTitle.Text = "DASHBOARD";
             // 
             // panelMain
             // 
@@ -246,25 +241,26 @@ namespace SmartPowerOutageSystem.Forms
             pnlStatusCard.Name = "pnlStatusCard";
             pnlStatusCard.Size = new Size(714, 180);
             pnlStatusCard.TabIndex = 0;
+            
             // 
             // lblStatusTitle
             // 
             lblStatusTitle.AutoSize = true;
             lblStatusTitle.Font = new Font("Segoe UI Semibold", 12F);
-            lblStatusTitle.ForeColor = Color.FromArgb(127, 140, 141);
+            lblStatusTitle.ForeColor = Color.FromArgb(100, 116, 139);
             lblStatusTitle.Location = new Point(30, 30);
             lblStatusTitle.Name = "lblStatusTitle";
             lblStatusTitle.Size = new Size(130, 28);
             lblStatusTitle.TabIndex = 0;
-            lblStatusTitle.Text = "Power Status";
+            lblStatusTitle.Text = "Current Status";
             // 
             // lblStatus
             // 
-            lblStatus.Font = new Font("Segoe UI Black", 28F, FontStyle.Bold);
-            lblStatus.ForeColor = Color.FromArgb(46, 204, 113);
+            lblStatus.Font = new Font("Segoe UI", 32F, FontStyle.Bold);
+            lblStatus.ForeColor = Color.FromArgb(16, 185, 129); // Vibrant Green
             lblStatus.Location = new Point(30, 70);
             lblStatus.Name = "lblStatus";
-            lblStatus.Size = new Size(650, 60);
+            lblStatus.Size = new Size(650, 70);
             lblStatus.TabIndex = 1;
             lblStatus.Text = "POWER ONLINE";
             lblStatus.TextAlign = ContentAlignment.MiddleLeft;
@@ -272,13 +268,13 @@ namespace SmartPowerOutageSystem.Forms
             // lblLocation
             // 
             lblLocation.AutoSize = true;
-            lblLocation.Font = new Font("Segoe UI", 10F);
-            lblLocation.ForeColor = Color.FromArgb(149, 165, 166);
-            lblLocation.Location = new Point(30, 135);
+            lblLocation.Font = new Font("Segoe UI", 10.5F);
+            lblLocation.ForeColor = Color.FromArgb(100, 116, 139);
+            lblLocation.Location = new Point(30, 140);
             lblLocation.Name = "lblLocation";
             lblLocation.Size = new Size(141, 23);
             lblLocation.TabIndex = 2;
-            lblLocation.Text = "Location: Unset";
+            lblLocation.Text = "📍 Home Sector";
             // 
             // pnlNotif
             // 
@@ -325,15 +321,17 @@ namespace SmartPowerOutageSystem.Forms
             // 
             // btnRefresh
             // 
-            btnRefresh.BackColor = Color.FromArgb(189, 195, 199);
+            btnRefresh.BackColor = Color.FromArgb(37, 99, 235);
+            btnRefresh.Cursor = Cursors.Hand;
             btnRefresh.FlatAppearance.BorderSize = 0;
             btnRefresh.FlatStyle = FlatStyle.Flat;
-            btnRefresh.Font = new Font("Segoe UI Semibold", 9F);
+            btnRefresh.Font = new Font("Segoe UI Semibold", 9.5F);
+            btnRefresh.ForeColor = Color.White;
             btnRefresh.Location = new Point(30, 370);
             btnRefresh.Name = "btnRefresh";
-            btnRefresh.Size = new Size(130, 35);
+            btnRefresh.Size = new Size(160, 45);
             btnRefresh.TabIndex = 3;
-            btnRefresh.Text = "🔄 Refresh Status";
+            btnRefresh.Text = "🔄 Refresh Tracker";
             btnRefresh.UseVisualStyleBackColor = false;
             btnRefresh.Click += btnRefresh_Click;
             // 

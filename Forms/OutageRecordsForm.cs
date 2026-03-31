@@ -88,11 +88,14 @@ namespace SmartPowerOutageSystem.Forms
                 
                 if (result == DialogResult.Yes)
                 {
-                    int id = (int)dgvRecords.SelectedRows[0].Cells["ReportID"].Value;
-                    if (_outageService.DeleteReport(id))
+                    object val = dgvRecords.SelectedRows[0].Cells["ReportID"].Value;
+                    if (val is int id)
                     {
-                        MessageBox.Show("Record deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LoadData();
+                        if (_outageService.DeleteReport(id))
+                        {
+                            MessageBox.Show("Record deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadData();
+                        }
                     }
                 }
             }
@@ -117,11 +120,14 @@ namespace SmartPowerOutageSystem.Forms
         {
             if (dgvRecords.SelectedRows.Count > 0)
             {
-                var report = (PowerOutageReport)dgvRecords.SelectedRows[0].DataBoundItem;
-                var updateForm = new OutageUpdateForm(report);
-                if (updateForm.ShowDialog() == DialogResult.OK)
+                var report = dgvRecords.SelectedRows[0].DataBoundItem as PowerOutageReport;
+                if (report != null)
                 {
-                    LoadData();
+                    var updateForm = new OutageUpdateForm(report);
+                    if (updateForm.ShowDialog() == DialogResult.OK)
+                    {
+                        LoadData();
+                    }
                 }
             }
         }

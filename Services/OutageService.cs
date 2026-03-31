@@ -61,13 +61,40 @@ namespace SmartPowerOutageSystem.Services
             using var connection = DatabaseHelper.GetConnection();
             connection.Open();
 
+            // First, find who reported it and the location
+            string reportedBy = "Anonymous";
+            string location = "Unknown";
+            var cmdFind = connection.CreateCommand();
+            cmdFind.CommandText = "SELECT ReportedBy, Location FROM OutageReports WHERE ReportID = @id";
+            cmdFind.Parameters.AddWithValue("@id", id);
+            using (var reader = cmdFind.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    reportedBy = reader.IsDBNull(0) ? "Anonymous" : reader.GetString(0);
+                    location = reader.IsDBNull(1) ? "Unknown" : reader.GetString(1);
+                }
+            }
+
             var cmd = connection.CreateCommand();
             cmd.CommandText = "UPDATE OutageReports SET Status = @s, RestorationDate = @r WHERE ReportID = @id";
             cmd.Parameters.AddWithValue("@s", status);
             cmd.Parameters.AddWithValue("@r", (object?)restorationDate ?? DBNull.Value);
             cmd.Parameters.AddWithValue("@id", id);
 
-            return cmd.ExecuteNonQuery() > 0;
+            bool success = cmd.ExecuteNonQuery() > 0;
+
+            if (success && reportedBy != "Anonymous")
+            {
+                var notifService = new NotificationService();
+                string message = $"Your power outage report for {location} has been updated to '{status}'.";
+                if (status == "Restored" || status == "Resolved")
+                    message = $"Great news! Power has been restored at {location}. Status: {status}.";
+                
+                notifService.SendNotification(reportedBy, message);
+            }
+
+            return success;
         }
 
         public bool DeleteReport(int id)
@@ -152,6 +179,57 @@ namespace SmartPowerOutageSystem.Services
             connection.Open();
             var cmd = connection.CreateCommand();
             cmd.CommandText = "SELECT OutageType, COUNT(*) as Count FROM OutageReports GROUP BY OutageType ORDER BY Count DESC";
+            using var reader = cmd.ExecuteReader();
+            dt.Load(reader);
+            return dt;
+        }
+
+        public DataTable GetRecentReports(int limit)
+        {
+            DataTable dt = new DataTable();
+            using var connection = DatabaseHelper.GetConnection();
+            connection.Open();
+            var cmd = connection.CreateCommand();
+            cmd.CommandText = "SELECT ReportID as ID, Location, ReportDate as Date, Status FROM OutageReports ORDER BY ReportDate DESC";
+            using var reader = cmd.ExecuteReader();
+            dt.Load(reader);
+            
+            // Limit in memory or in SQL (SQLite uses LIMIT)
+            DataTable result = dt.Clone();
+            for (int i = 0; i < Math.Min(limit, dt.Rows.Count); i++)
+                result.ImportRow(dt.Rows[i]);
+            return result;
+        }
+
+        public Dictionary<string, int> GetDashboardCounts()
+        {
+            var counts = new Dictionary<string, int>();
+            using var connection = DatabaseHelper.GetConnection();
+            connection.Open();
+            var cmd = connection.CreateCommand();
+
+            cmd.CommandText = "SELECT COUNT(*) FROM OutageReports";
+            counts["Total"] = Convert.ToInt32(cmd.ExecuteScalar());
+
+            cmd.CommandText = "SELECT COUNT(*) FROM OutageReports WHERE Status = 'Pending'";
+            counts["Pending"] = Convert.ToInt32(cmd.ExecuteScalar());
+
+            cmd.CommandText = "SELECT COUNT(*) FROM OutageReports WHERE Status = 'Restored' OR Status = 'Resolved'";
+            counts["Resolved"] = Convert.ToInt32(cmd.ExecuteScalar());
+
+            cmd.CommandText = "SELECT COUNT(*) FROM OutageReports WHERE CAST(ReportDate AS DATE) = CAST(GETDATE() AS DATE)";
+            counts["Today"] = Convert.ToInt32(cmd.ExecuteScalar());
+
+            return counts;
+        }
+
+        public DataTable GetTopLocationsForChart(int count)
+        {
+            DataTable dt = new DataTable();
+            using var connection = DatabaseHelper.GetConnection();
+            connection.Open();
+            var cmd = connection.CreateCommand();
+            cmd.CommandText = $"SELECT TOP {count} Location, COUNT(*) as Count FROM OutageReports GROUP BY Location ORDER BY Count DESC";
             using var reader = cmd.ExecuteReader();
             dt.Load(reader);
             return dt;

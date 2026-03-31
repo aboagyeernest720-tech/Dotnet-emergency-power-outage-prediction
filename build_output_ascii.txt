@@ -1,0 +1,13 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\Forms\PlannedOperationsForm.cs(255,10): error CS1513: } expected [C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\SmartPowerOutageSystem.csproj]
+
+Build FAILED.
+
+C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\Forms\PlannedOperationsForm.cs(255,10): error CS1513: } expected [C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\SmartPowerOutageSystem.csproj]
+    0 Warning(s)
+    1 Error(s)
+
+Time Elapsed 00:00:03.74
+
+Workload updates are available. Run `dotnet workload list` for more information.

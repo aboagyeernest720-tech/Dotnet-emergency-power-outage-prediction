@@ -30,33 +30,48 @@ namespace SmartPowerOutageSystem.Forms
             lblInfo = new Label();
             btnUpdate = new Button();
             btnCancel = new Button();
+            btnExit = new Button();
             panelHeader.SuspendLayout();
             panelContent.SuspendLayout();
             SuspendLayout();
             // 
             // panelHeader
             // 
-            panelHeader.BackColor = Color.FromArgb(0, 150, 136);
+            panelHeader.BackColor = Color.FromArgb(17, 33, 51);
+            panelHeader.Controls.Add(btnExit);
             panelHeader.Controls.Add(lblTitle);
             panelHeader.Dock = DockStyle.Top;
             panelHeader.Location = new Point(0, 0);
             panelHeader.Name = "panelHeader";
-            panelHeader.Size = new Size(550, 80);
+            panelHeader.Size = new Size(550, 100);
             panelHeader.TabIndex = 0;
             // 
             // lblTitle
             // 
             lblTitle.AutoSize = true;
-            lblTitle.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            lblTitle.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold);
             lblTitle.ForeColor = Color.White;
-            lblTitle.Location = new Point(30, 20);
+            lblTitle.Location = new Point(30, 30);
             lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(250, 41);
+            lblTitle.Size = new Size(330, 41);
             lblTitle.TabIndex = 0;
-            lblTitle.Text = "UPDATE STATUS";
+            lblTitle.Text = "UPDATE REPORT STATUS";
             // 
-            // panelContent
+            // btnExit
             // 
+            btnExit.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnExit.Cursor = Cursors.Hand;
+            btnExit.FlatAppearance.BorderSize = 0;
+            btnExit.FlatStyle = FlatStyle.Flat;
+            btnExit.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            btnExit.ForeColor = Color.White;
+            btnExit.Location = new Point(510, 10);
+            btnExit.Name = "btnExit";
+            btnExit.Size = new Size(30, 30);
+            btnExit.TabIndex = 1;
+            btnExit.Text = "✕";
+            btnExit.UseVisualStyleBackColor = true;
+            btnExit.Click += (s, e) => this.Close();
             panelContent.BackColor = Color.White;
             panelContent.Controls.Add(chkIsRestored);
             panelContent.Controls.Add(dtpRestorationDate);
@@ -65,10 +80,10 @@ namespace SmartPowerOutageSystem.Forms
             panelContent.Controls.Add(lblStatus);
             panelContent.Controls.Add(lblInfo);
             panelContent.Dock = DockStyle.Fill;
-            panelContent.Location = new Point(0, 80);
+            panelContent.Location = new Point(0, 100);
             panelContent.Name = "panelContent";
             panelContent.Padding = new Padding(30);
-            panelContent.Size = new Size(550, 520);
+            panelContent.Size = new Size(550, 500);
             panelContent.TabIndex = 1;
             // 
             // chkIsRestored
@@ -107,8 +122,8 @@ namespace SmartPowerOutageSystem.Forms
             cmbStatus.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbStatus.Font = new Font("Segoe UI", 11F);
             cmbStatus.FormattingEnabled = true;
-            cmbStatus.Items.AddRange(new object[] { "Reported", "Investigating", "Repair in Progress", "Partially Restored", "Restored" });
-            cmbStatus.Location = new Point(40, 160);
+            cmbStatus.Items.AddRange(new object[] { "Reported", "Investigating", "Repair in Progress", "Partially Restored", "Restored", "Maintenance" });
+            cmbStatus.Location = new Point(40, 180);
             cmbStatus.Name = "cmbStatus";
             cmbStatus.Size = new Size(470, 33);
             cmbStatus.TabIndex = 2;
@@ -117,7 +132,7 @@ namespace SmartPowerOutageSystem.Forms
             // 
             lblStatus.AutoSize = true;
             lblStatus.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
-            lblStatus.Location = new Point(40, 130);
+            lblStatus.Location = new Point(40, 150);
             lblStatus.Name = "lblStatus";
             lblStatus.Size = new Size(119, 23);
             lblStatus.TabIndex = 1;
@@ -129,13 +144,15 @@ namespace SmartPowerOutageSystem.Forms
             lblInfo.ForeColor = Color.FromArgb(66, 66, 66);
             lblInfo.Location = new Point(40, 30);
             lblInfo.Name = "lblInfo";
-            lblInfo.Size = new Size(470, 80);
+            lblInfo.Size = new Size(470, 110);
             lblInfo.TabIndex = 0;
             lblInfo.Text = "Updating Report for:\r\nLocation: [Location]\r\nType: [Type]";
+            lblInfo.UseCompatibleTextRendering = true;
             // 
             // btnUpdate
             // 
-            btnUpdate.BackColor = Color.FromArgb(0, 150, 136);
+            btnUpdate.BackColor = Color.FromArgb(37, 99, 235);
+            btnUpdate.FlatAppearance.BorderSize = 0;
             btnUpdate.FlatStyle = FlatStyle.Flat;
             btnUpdate.Font = new Font("Segoe UI Bold", 11F, FontStyle.Bold);
             btnUpdate.ForeColor = Color.White;
@@ -168,6 +185,7 @@ namespace SmartPowerOutageSystem.Forms
             Controls.Add(btnUpdate);
             Controls.Add(panelContent);
             Controls.Add(panelHeader);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "OutageUpdateForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Update Outage Status";
@@ -190,5 +208,6 @@ namespace SmartPowerOutageSystem.Forms
         private CheckBox chkIsRestored;
         private Button btnUpdate;
         private Button btnCancel;
+        private Button btnExit;
     }
 }

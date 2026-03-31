@@ -35,10 +35,7 @@ namespace SmartPowerOutageSystem.Forms
             panelHeader.SuspendLayout();
             panelContent.SuspendLayout();
             SuspendLayout();
-            // 
-            // panelHeader
-            // 
-            panelHeader.BackColor = Color.FromArgb(0, 150, 136);
+            panelHeader.BackColor = Color.FromArgb(17, 33, 51);
             panelHeader.Controls.Add(lblTitle);
             panelHeader.Dock = DockStyle.Top;
             panelHeader.Location = new Point(0, 0);
@@ -49,13 +46,13 @@ namespace SmartPowerOutageSystem.Forms
             // lblTitle
             // 
             lblTitle.AutoSize = true;
-            lblTitle.Font = new Font("Segoe UI Black", 18F, FontStyle.Bold);
+            lblTitle.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold);
             lblTitle.ForeColor = Color.White;
-            lblTitle.Location = new Point(30, 30);
+            lblTitle.Location = new Point(35, 30);
             lblTitle.Name = "lblTitle";
             lblTitle.Size = new Size(330, 41);
             lblTitle.TabIndex = 0;
-            lblTitle.Text = "CREATE ACCOUNT 👤";
+            lblTitle.Text = "👤 CREATE ACCOUNT";
             // 
             // panelContent
             // 
@@ -79,16 +76,17 @@ namespace SmartPowerOutageSystem.Forms
             // 
             // btnSignup
             // 
-            btnSignup.BackColor = Color.FromArgb(0, 150, 136);
+            btnSignup.BackColor = Color.FromArgb(37, 99, 235);
+            btnSignup.Cursor = Cursors.Hand;
             btnSignup.FlatAppearance.BorderSize = 0;
             btnSignup.FlatStyle = FlatStyle.Flat;
-            btnSignup.Font = new Font("Segoe UI Black", 11F, FontStyle.Bold);
+            btnSignup.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             btnSignup.ForeColor = Color.White;
             btnSignup.Location = new Point(50, 480);
             btnSignup.Name = "btnSignup";
-            btnSignup.Size = new Size(350, 50);
+            btnSignup.Size = new Size(350, 55);
             btnSignup.TabIndex = 4;
-            btnSignup.Text = "R E G I S T E R";
+            btnSignup.Text = "REGISTER";
             btnSignup.UseVisualStyleBackColor = false;
             btnSignup.Click += btnSignup_Click;
             // 

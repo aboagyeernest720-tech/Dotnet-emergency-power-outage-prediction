@@ -8,8 +8,8 @@ namespace SmartPowerOutageSystem.Forms
     {
         private readonly UserService _userService = new UserService();
         private readonly LocationService _locationService = new LocationService();
-        public string NewUsername { get; private set; }
-        public string NewPassword { get; private set; }
+        public string? NewUsername { get; private set; }
+        public string? NewPassword { get; private set; }
 
         public SignupForm()
         {
@@ -43,7 +43,7 @@ namespace SmartPowerOutageSystem.Forms
                 var dt = _locationService.GetAllLocations();
                 foreach (System.Data.DataRow row in dt.Rows)
                 {
-                    cmbLocation.Items.Add(row["LocationName"].ToString());
+                    cmbLocation.Items.Add(row["LocationName"]?.ToString() ?? "Unknown");
                 }
                 
                 cmbLocation.SelectedIndex = 0;
@@ -98,7 +98,7 @@ namespace SmartPowerOutageSystem.Forms
                         MessageBox.Show("Please select a valid location.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
-                    userLocation = cmbLocation.SelectedItem.ToString();
+                    userLocation = cmbLocation.SelectedItem?.ToString() ?? "Unknown";
                 }
 
                 // Decide role based on count

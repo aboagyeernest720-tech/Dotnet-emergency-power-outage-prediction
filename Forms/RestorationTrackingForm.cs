@@ -41,10 +41,10 @@ namespace SmartPowerOutageSystem.Forms
 
             dgvRestoration.DataSource = dt;
             
-            // Cleanup headers
-            dgvRestoration.Columns["ReportDate"].HeaderText = "Reported On";
-            dgvRestoration.Columns["RestorationDate"].HeaderText = "Resolved On";
-            dgvRestoration.Columns["Duration"].HeaderText = "Time to Restore";
+            // Cleanup headers (Null-safe)
+            if (dgvRestoration.Columns["ReportDate"] != null) dgvRestoration.Columns["ReportDate"]!.HeaderText = "Reported On";
+            if (dgvRestoration.Columns["RestorationDate"] != null) dgvRestoration.Columns["RestorationDate"]!.HeaderText = "Resolved On";
+            if (dgvRestoration.Columns["Duration"] != null) dgvRestoration.Columns["Duration"]!.HeaderText = "Time to Restore";
         }
         private void btnBack_Click(object sender, EventArgs e)
         {

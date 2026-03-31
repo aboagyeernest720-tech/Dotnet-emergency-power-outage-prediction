@@ -79,3 +79,4 @@ c:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\bin\Debug\n
 c:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\bin\Debug\net9.0-windows\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
 c:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\bin\Debug\net9.0-windows\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
 c:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\bin\Debug\net9.0-windows\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Kwaku Frimpong\Desktop\.NET Projects\SmartPowerOutageSystem\obj\Debug\net9.0-windows\SmartPowerOutageSystem.sourcelink.json

@@ -24,7 +24,7 @@ namespace SmartPowerOutageSystem.Forms
         {
             string username = txtUsername.Text.Trim();
             string password = txtPassword.Text.Trim();
-            string role = cmbRole.SelectedItem?.ToString();
+            string role = cmbRole.SelectedItem?.ToString() ?? string.Empty;
 
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(role))
             {
@@ -85,9 +85,9 @@ namespace SmartPowerOutageSystem.Forms
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dgvUsers.Rows[e.RowIndex];
-                txtUsername.Text = row.Cells["Username"].Value.ToString();
-                cmbRole.SelectedItem = row.Cells["Role"].Value.ToString();
-                txtUsername.ReadOnly = true; // Don't allow renaming username in edit mode
+                txtUsername.Text = row.Cells["Username"].Value?.ToString() ?? string.Empty;
+                cmbRole.SelectedItem = row.Cells["Role"].Value?.ToString() ?? string.Empty;
+                txtUsername.ReadOnly = true; 
             }
         }
     }
